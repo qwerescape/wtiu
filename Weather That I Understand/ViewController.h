@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+@class WeatherService;
+@interface ViewController : UIViewController<CLLocationManagerDelegate> {
+    WeatherService* weatherService;
+    CLLocationManager* locationManager;
+}
+@property (weak, nonatomic) IBOutlet UILabel *technicalWeatherCondition;
+@property (weak, nonatomic) IBOutlet UILabel *cityName;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-@interface ViewController : UIViewController
+-(void)updateCityName:(NSString*)name;
 
 @end
