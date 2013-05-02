@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class ViewController;
 @interface WeatherService : NSObject{
-   
+    NSData* lastReceivedData;
     ViewController* viewController;
 }
 -(id)initWithViewController: (ViewController*)vc;

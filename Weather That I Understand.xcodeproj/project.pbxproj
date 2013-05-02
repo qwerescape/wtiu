@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		CCCB25771728AF2B00377BA0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCB25761728AF2B00377BA0 /* CoreLocation.framework */; };
 		CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */; };
+		CCCB257F172B747400377BA0 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCB257E172B747400377BA0 /* Weather.m */; };
+		CCCB258F172C7BC700377BA0 /* sun_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCCB258A172C7BC700377BA0 /* sun_clear@2x.png */; };
+		CCCB2590172C7BC700377BA0 /* night_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCCB258B172C7BC700377BA0 /* night_clear@2x.png */; };
+		CCCB2591172C7BC700377BA0 /* sun_cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCCB258C172C7BC700377BA0 /* sun_cloud@2x.png */; };
+		CCCB2592172C7BC700377BA0 /* night_cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCCB258D172C7BC700377BA0 /* night_cloud@2x.png */; };
+		CCCB2593172C7BC700377BA0 /* rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCCB258E172C7BC700377BA0 /* rain@2x.png */; };
 		CCF2C5EE1722263600AFF6BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF2C5ED1722263600AFF6BD /* UIKit.framework */; };
 		CCF2C5F01722263600AFF6BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF2C5EF1722263600AFF6BD /* Foundation.framework */; };
 		CCF2C5F21722263600AFF6BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF2C5F11722263600AFF6BD /* CoreGraphics.framework */; };
@@ -27,6 +33,13 @@
 		CCCB25761728AF2B00377BA0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCCB25781728BD5A00377BA0 /* WeatherServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherServiceDelegate.h; sourceTree = "<group>"; };
 		CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherServiceDelegate.m; sourceTree = "<group>"; };
+		CCCB257D172B747400377BA0 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
+		CCCB257E172B747400377BA0 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		CCCB258A172C7BC700377BA0 /* sun_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun_clear@2x.png"; sourceTree = "<group>"; };
+		CCCB258B172C7BC700377BA0 /* night_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "night_clear@2x.png"; sourceTree = "<group>"; };
+		CCCB258C172C7BC700377BA0 /* sun_cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun_cloud@2x.png"; sourceTree = "<group>"; };
+		CCCB258D172C7BC700377BA0 /* night_cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "night_cloud@2x.png"; sourceTree = "<group>"; };
+		CCCB258E172C7BC700377BA0 /* rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rain@2x.png"; sourceTree = "<group>"; };
 		CCF2C5EA1722263600AFF6BD /* Weather That I Understand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather That I Understand.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF2C5ED1722263600AFF6BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCF2C5EF1722263600AFF6BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +116,8 @@
 				CCF2C611172227B600AFF6BD /* WeatherService.m */,
 				CCCB25781728BD5A00377BA0 /* WeatherServiceDelegate.h */,
 				CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */,
+				CCCB257D172B747400377BA0 /* Weather.h */,
+				CCCB257E172B747400377BA0 /* Weather.m */,
 			);
 			path = "Weather That I Understand";
 			sourceTree = "<group>";
@@ -110,6 +125,11 @@
 		CCF2C5F41722263600AFF6BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CCCB258A172C7BC700377BA0 /* sun_clear@2x.png */,
+				CCCB258B172C7BC700377BA0 /* night_clear@2x.png */,
+				CCCB258C172C7BC700377BA0 /* sun_cloud@2x.png */,
+				CCCB258D172C7BC700377BA0 /* night_cloud@2x.png */,
+				CCCB258E172C7BC700377BA0 /* rain@2x.png */,
 				CCF2C5F51722263600AFF6BD /* Weather That I Understand-Info.plist */,
 				CCF2C5F61722263600AFF6BD /* InfoPlist.strings */,
 				CCF2C5F91722263600AFF6BD /* main.m */,
@@ -177,6 +197,11 @@
 				CCF2C6021722263600AFF6BD /* Default@2x.png in Resources */,
 				CCF2C6041722263600AFF6BD /* Default-568h@2x.png in Resources */,
 				CCF2C6071722263600AFF6BD /* MainStoryboard.storyboard in Resources */,
+				CCCB258F172C7BC700377BA0 /* sun_clear@2x.png in Resources */,
+				CCCB2590172C7BC700377BA0 /* night_clear@2x.png in Resources */,
+				CCCB2591172C7BC700377BA0 /* sun_cloud@2x.png in Resources */,
+				CCCB2592172C7BC700377BA0 /* night_cloud@2x.png in Resources */,
+				CCCB2593172C7BC700377BA0 /* rain@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +217,7 @@
 				CCF2C60A1722263600AFF6BD /* ViewController.m in Sources */,
 				CCF2C612172227B600AFF6BD /* WeatherService.m in Sources */,
 				CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */,
+				CCCB257F172B747400377BA0 /* Weather.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
