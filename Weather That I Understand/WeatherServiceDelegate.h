@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface WeatherServiceDelegate : NSObject <NSURLConnectionDelegate>{
+    long fileSize;
     NSMutableData* receivedData;
     NSURLRequest* _request;
     void(^_callback)(NSMutableData*);
+    void(^_progressCallback)(float);
 }
 -(id)initWithRequest:(NSURLRequest*)request;
--(void)startConnection:(void(^)(NSMutableData*))callback;
+-(void)startConnection:(void(^)(NSMutableData*))callback progress:(void(^)(float))progressCallback;
 @end

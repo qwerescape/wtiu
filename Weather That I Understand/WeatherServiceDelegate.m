@@ -17,7 +17,7 @@
     
 }
 
--(void)startConnection:(void (^)(NSMutableData*))callback{
+-(void)startConnection:(void (^)(NSMutableData*))callback progress:(void (^)(float))progressCallback{
     // create the connection with the request
     // and start loading the data
     NSURLConnection *yesterdayWeatherConnection=[[NSURLConnection alloc] initWithRequest:_request delegate:self];
@@ -26,6 +26,7 @@
         // receivedData is an instance variable declared elsewhere.
         receivedData = [NSMutableData data] ;
         _callback = callback;
+        _progressCallback = progressCallback;
     } else {
         // Inform the user that the connection failed.
     }
@@ -42,12 +43,16 @@
     
     // receivedData is an instance variable declared elsewhere.
     [receivedData setLength:0];
+    fileSize = [response expectedContentLength];
 }
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
     [receivedData appendData:data];
+    NSNumber *resourceLength = [NSNumber numberWithUnsignedInteger:[receivedData length]];
+    _progressCallback([resourceLength floatValue] / fileSize);
+    NSLog(@"progress is %.00f / %ld \n", [resourceLength floatValue], fileSize);
 }
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error

@@ -12,7 +12,6 @@
 #import "Weather.h"
 @interface WeatherService()
 -(void)getCurrentWeatherData:(NSMutableData*)receivedData;
--(void)getYesterdayWeatherData:(NSMutableData*)receivedData;
 @end
 @implementation WeatherService
 -(id)initWithViewController:(ViewController *)vc{
@@ -22,15 +21,6 @@
     return self;
 }
 
--(void)getYesterdayWeatherForLatitude:(double)lat longitude:(double)lng{
-    NSURLRequest *yeterdayWeatherRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.wunderground.com/api/655b22ba986882f1/yesterday/q/%f,%f.json", lat, lng]]
-                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                      timeoutInterval:30.0];
-    [[[WeatherServiceDelegate alloc]initWithRequest:yeterdayWeatherRequest]startConnection:^(NSMutableData* data){
-        [self getYesterdayWeatherData: data];
-    }];
-}
-
 -(void)getCurrentWeatherForLatitude:(double)lat longitude:(double)lng{
     // Create the request.
     NSURLRequest *currentWeatherRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.wunderground.com/api/655b22ba986882f1/yesterday/forecast/conditions/q/%f,%f.json", lat, lng]]
@@ -38,7 +28,10 @@
                                           timeoutInterval:30.0];
     [[[WeatherServiceDelegate alloc]initWithRequest:currentWeatherRequest]startConnection:^(NSMutableData*data){
         [self getCurrentWeatherData: data];
-    }];}
+    } progress:^(float progress){
+        [viewController.loader setProgress:progress];
+    }];
+}
 
 -(void)getCurrentWeatherData:(NSMutableData*)receivedData{
     lastReceivedData = receivedData;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC16295F1739EF0800E084FB /* CompareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC16295E1739EF0700E084FB /* CompareViewController.m */; };
 		CCCB25771728AF2B00377BA0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCB25761728AF2B00377BA0 /* CoreLocation.framework */; };
 		CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */; };
 		CCCB257F172B747400377BA0 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCB257E172B747400377BA0 /* Weather.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC16295D1739EF0700E084FB /* CompareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompareViewController.h; sourceTree = "<group>"; };
+		CC16295E1739EF0700E084FB /* CompareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompareViewController.m; sourceTree = "<group>"; };
 		CCCB25761728AF2B00377BA0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCCB25781728BD5A00377BA0 /* WeatherServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherServiceDelegate.h; sourceTree = "<group>"; };
 		CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherServiceDelegate.m; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 		CCF2C5F31722263600AFF6BD /* Weather That I Understand */ = {
 			isa = PBXGroup;
 			children = (
+				CC16295D1739EF0700E084FB /* CompareViewController.h */,
+				CC16295E1739EF0700E084FB /* CompareViewController.m */,
 				CCF2C5FC1722263600AFF6BD /* AppDelegate.h */,
 				CCF2C5FD1722263600AFF6BD /* AppDelegate.m */,
 				CCF2C6051722263600AFF6BD /* MainStoryboard.storyboard */,
@@ -218,6 +223,7 @@
 				CCF2C612172227B600AFF6BD /* WeatherService.m in Sources */,
 				CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */,
 				CCCB257F172B747400377BA0 /* Weather.m in Sources */,
+				CC16295F1739EF0800E084FB /* CompareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

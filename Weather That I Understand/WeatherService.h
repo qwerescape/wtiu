@@ -13,6 +13,5 @@
     ViewController* viewController;
 }
 -(id)initWithViewController: (ViewController*)vc;
--(void)getYesterdayWeatherForLatitude:(double)lat longitude:(double)lng;
 -(void)getCurrentWeatherForLatitude:(double)lat longitude:(double)lng;
 @end
