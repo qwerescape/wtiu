@@ -43,10 +43,10 @@
               windDesc:(NSString*)windDesc
              windSpeed:(NSString*)windSpeed{
 
-    UIFont *specialFont=[UIFont fontWithName:@"Helvetica" size:20.0f];
+    UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:20.0f];
     UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
     UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
-    UIFont *normalFont=[UIFont fontWithName:@"Helvetica" size:18.0f];
+    UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"noisy.gif"]]];
     
     
@@ -97,7 +97,7 @@
     
     NSInteger strLength = [attrFillerText length];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setLineSpacing:15];
+    [style setLineSpacing:13];
     [attrFillerText addAttribute:NSParagraphStyleAttributeName
                       value:style
                       range:NSMakeRange(0, strLength)];
