@@ -16,19 +16,12 @@
     Weather* current;
     Weather* yesterday;
     Weather* tomorrow;
+    NSString* currentCity;
 }
-@property (weak, nonatomic) IBOutlet UILabel *todayTemp;
-@property (weak, nonatomic) IBOutlet UILabel *weatherCondition;
-@property (weak, nonatomic) IBOutlet UILabel *todayForecast;
-@property (weak, nonatomic) IBOutlet UILabel *todayWind;
-
-@property (weak, nonatomic) IBOutlet UILabel *cityName;
-@property (weak, nonatomic) IBOutlet UILabel *yesterdayTemp;
-@property (weak, nonatomic) IBOutlet UILabel *tomorrowTemp;
+@property (weak, nonatomic) IBOutlet UILabel *weatherText;
 - (IBAction)cfValueSwitched:(id)sender;
 @property (weak, nonatomic) IBOutlet UISwitch *cfSwitch;
-
-@property (weak, nonatomic) IBOutlet UIProgressView *loader;
 -(void)updateCityName:(NSString*)name;
 -(void)updateCurrentWeather:(Weather*)cw yesterday:(Weather*)yw tomorrow:(Weather*)tw;
+-(void)setProgress:(float)progress;
 @end

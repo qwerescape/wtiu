@@ -29,7 +29,7 @@
     [[[WeatherServiceDelegate alloc]initWithRequest:currentWeatherRequest]startConnection:^(NSMutableData*data){
         [self getCurrentWeatherData: data];
     } progress:^(float progress){
-        [viewController.loader setProgress:progress];
+        [viewController setProgress:progress];
     }];
 }
 

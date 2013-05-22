@@ -12,30 +12,97 @@
 @interface ViewController ()
 -(void)loading;
 -(void)loaded;
+-(void)setInfoWithCity:(NSString*)city
+         todayForecast:(NSString*)todayForecast
+            relativeTo:(NSString*)relativeTo
+   relativePreposition:(NSString*)relativePreposition
+             yesterday:(NSString*)yesterdayWeather
+               current:(NSString*)currentFeel
+           weatherCond:(NSString*)weatherCond
+              windDesc:(NSString*)windDesc
+             windSpeed:(NSString*)windSpeed;
 @end
 
 @implementation ViewController
 
 -(void)loading{
-    self.todayTemp.alpha = 0;
-    self.weatherCondition.alpha = 0;
-    self.todayForecast.alpha = 0;
-    self.todayWind.alpha = 0;
-    self.cityName.alpha = 0;
-    self.yesterdayTemp.alpha = 0;
-    self.tomorrowTemp.alpha = 0;
     self.cfSwitch.alpha = 0;
 }
 
 -(void)loaded{
-    self.todayTemp.alpha = 1;
-    self.weatherCondition.alpha = 1;
-    self.todayForecast.alpha = 1;
-    self.todayWind.alpha = 1;
-    self.cityName.alpha = 1;
-    self.yesterdayTemp.alpha = 1;
-    self.tomorrowTemp.alpha = 1;
     self.cfSwitch.alpha = 1;
+}
+
+-(void)setInfoWithCity:(NSString*)city
+         todayForecast:(NSString*)todayForecast
+            relativeTo:(NSString*)relativeTo
+   relativePreposition:(NSString*)relativePreposition
+             yesterday:(NSString*)yesterdayWeather
+               current:(NSString*)currentFeel
+           weatherCond:(NSString*)weatherCond
+              windDesc:(NSString*)windDesc
+             windSpeed:(NSString*)windSpeed{
+
+    UIFont *specialFont=[UIFont fontWithName:@"Helvetica" size:20.0f];
+    UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
+    UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
+    UIFont *normalFont=[UIFont fontWithName:@"Helvetica" size:18.0f];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"noisy.gif"]]];
+    
+    
+    NSString* fillerText = [NSString stringWithFormat:
+                            @"You are in {1}, beautiful. "
+                            "My sources say today is {2}, "
+                            "which is {3} %@ yesterday's %@. "
+                            "Currently it feels like {4}. "
+                            "Overall today it'll be {5}, "
+                            "and it is {6}, %@.", relativePreposition, yesterdayWeather, windSpeed];
+    NSMutableAttributedString* attrFillerText = [[NSMutableAttributedString alloc] initWithString:fillerText];
+    
+    [attrFillerText addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, attrFillerText.length)];
+    [attrFillerText addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, attrFillerText.length)];
+    
+    NSMutableAttributedString* cityName = [[NSMutableAttributedString alloc] initWithString:city];
+    
+    [cityName addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, cityName.length)];
+    [cityName addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, cityName.length)];
+    
+    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{1}"] withAttributedString:cityName];
+    
+    NSMutableAttributedString* todayForecastTemp = [[NSMutableAttributedString alloc] initWithString:todayForecast];
+    [todayForecastTemp addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, todayForecastTemp.length)];
+    [todayForecastTemp addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, todayForecastTemp.length)];
+    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{2}"] withAttributedString:todayForecastTemp];
+    
+    NSMutableAttributedString* yesterdayCompare = [[NSMutableAttributedString alloc] initWithString:relativeTo];
+    [yesterdayCompare addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, yesterdayCompare.length)];
+    [yesterdayCompare addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, yesterdayCompare.length)];
+    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{3}"] withAttributedString:yesterdayCompare];
+    
+    
+    NSMutableAttributedString* currentTemp = [[NSMutableAttributedString alloc] initWithString:currentFeel];
+    [currentTemp addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentTemp.length)];
+    [currentTemp addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentTemp.length)];
+    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{4}"] withAttributedString:currentTemp];
+    
+    NSMutableAttributedString* currentWeather = [[NSMutableAttributedString alloc] initWithString:weatherCond];
+    [currentWeather addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentWeather.length)];
+    [currentWeather addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentWeather.length)];
+    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{5}"] withAttributedString:currentWeather];
+    
+    NSMutableAttributedString* currentWind = [[NSMutableAttributedString alloc] initWithString:windDesc];
+    [currentWind addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentWind.length)];
+    [currentWind addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentWind.length)];
+    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{6}"] withAttributedString:currentWind];
+    
+    NSInteger strLength = [attrFillerText length];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:15];
+    [attrFillerText addAttribute:NSParagraphStyleAttributeName
+                      value:style
+                      range:NSMakeRange(0, strLength)];
+    
+    self.weatherText.attributedText = attrFillerText;
 }
 
 - (void)viewDidLoad
@@ -75,8 +142,12 @@
 
 }
 
+-(void)setProgress:(float)progress{
+    
+}
+
 -(void)updateCityName:(NSString *)name{
-    [self.cityName setText:[NSString stringWithFormat:@"%@ now:", name]];
+    currentCity = name;
 }
 
 -(void)updateCurrentWeather:(Weather *)cw yesterday:(Weather *)yw tomorrow:(Weather *)tw{
@@ -95,7 +166,7 @@
     double tomorrowHigh = tw.chigh;
     double tomorrowLow = tw.clow;
     
-    NSString* windUnit = @"km";
+    NSString* windUnit = @"km/h";
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"isMetric"]){
         currentFeelsLike = cw.ffeelslike;
@@ -108,27 +179,22 @@
 
         tomorrowHigh = tw.fhigh;
         tomorrowLow = tw.flow;
-        windUnit = @"miles";
+        windUnit = @"miles/h";
         
     }
-    [self.todayTemp setText:[NSString stringWithFormat:@"NOW feels like %.1f°",currentFeelsLike]];
-    [self.todayForecast setText:[NSString stringWithFormat:@"%.0f°/%.0f°", currentHigh, currentLow]];
-    [self.weatherCondition setText:cw.wc];
     
     //yesterday's weather
     double todayAverage = (currentHigh + currentLow)/2;
     double yesterdayAverage = (yesterdayHigh + yesterdayLow)/2;
-    NSString* yesterdayTempDescription = @"Similar to";
+    NSString* yesterdayTempDescription = @"similar";
+    NSString* yesterdayTempPreposition = @"to";
     if (todayAverage - yesterdayAverage > 3){
-        yesterdayTempDescription = @"Hotter than";
+        yesterdayTempDescription = @"hotter";
+        yesterdayTempPreposition = @"than";
     }else if (todayAverage - yesterdayAverage < -3){
-        yesterdayTempDescription = @"Cooler than";
-    }else{
-        yesterdayTempDescription = @"Similar to";
+        yesterdayTempDescription = @"cooler";
+        yesterdayTempPreposition = @"than";
     }
-    
-    [self.yesterdayTemp setText:[NSString stringWithFormat:@"%@ YESTERDAY %.0f°/%.0f°", yesterdayTempDescription, yesterdayHigh, yesterdayLow]];
-    
     
     //tomorrow weather
     double tomorrowAverage = (tomorrowHigh + tomorrowLow)/2;
@@ -141,8 +207,6 @@
         tomorrowTempDescription = @"Similar to";
     }
     
-    [self.tomorrowTemp setText:[NSString stringWithFormat:@"%@ TOMORROW %.0f°/%.0f°", tomorrowTempDescription, tomorrowHigh, tomorrowLow]];
-    
     NSString* windDescription = @"wind is";
     if (currentWind < 5){
         windDescription = @"not much wind";
@@ -151,14 +215,21 @@
     }else {
         windDescription = @"really windy";
     }
-    [self.todayWind setText:[NSString stringWithFormat:@"%@. %.0f %@", windDescription, currentWind, windUnit]];
+    
+    [self setInfoWithCity:currentCity
+            todayForecast:[NSString stringWithFormat:@"%.0f/%.0f", currentHigh, currentLow]
+               relativeTo:yesterdayTempDescription
+      relativePreposition:yesterdayTempPreposition
+                yesterday:[NSString stringWithFormat:@"%.0f/%.0f", yesterdayHigh, yesterdayLow]
+                  current:[NSString stringWithFormat:@"%.0f",currentFeelsLike]
+              weatherCond:[cw.wc lowercaseString]
+                 windDesc:windDescription
+                windSpeed:[NSString stringWithFormat:@"%.0f %@", currentWind, windUnit]];
+    
     
     [UIView animateWithDuration:2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.loader.alpha = 0;
+        [self loaded];
     } completion:^(BOOL finished){
-        [UIView animateWithDuration:0.6 animations:^{
-            [self loaded];
-        }];        
     }];
     
 }
