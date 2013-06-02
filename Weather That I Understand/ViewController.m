@@ -10,8 +10,6 @@
 #import "WeatherService.h"
 #import "Weather.h"
 @interface ViewController ()
--(void)loading;
--(void)loaded;
 -(void)setInfoWithCity:(NSString*)city
          todayForecast:(NSString*)todayForecast
             relativeTo:(NSString*)relativeTo
@@ -25,14 +23,6 @@
 
 @implementation ViewController
 
--(void)loading{
-    self.cfSwitch.alpha = 0;
-}
-
--(void)loaded{
-    self.cfSwitch.alpha = 1;
-}
-
 -(void)setInfoWithCity:(NSString*)city
          todayForecast:(NSString*)todayForecast
             relativeTo:(NSString*)relativeTo
@@ -45,55 +35,87 @@
 
     UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:20.0f];
     UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
-    UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
+    UIColor *normalFontColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    //UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
     UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"noisy.gif"]]];
     
+    //get user string, if not, use default
+    NSString* displayString = [[NSUserDefaults standardUserDefaults]stringForKey:@"user_message"];
+    if (displayString == nil){
+        displayString = [Weather getDefaultMessageString];
+    }
     
-    NSString* fillerText = [NSString stringWithFormat:
-                            @"You are in {1}, beautiful. "
-                            "My sources say today is {2}, "
-                            "which is {3} %@ yesterday's %@. "
-                            "Currently it feels like {4}. "
-                            "Overall today it'll be {5}, "
-                            "and it is {6}, %@.", relativePreposition, yesterdayWeather, windSpeed];
+    NSString* fillerText = displayString;
     NSMutableAttributedString* attrFillerText = [[NSMutableAttributedString alloc] initWithString:fillerText];
     
     [attrFillerText addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, attrFillerText.length)];
     [attrFillerText addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, attrFillerText.length)];
+
+    if ([attrFillerText.string rangeOfString:@"{city}"].location != NSNotFound){
+        NSMutableAttributedString* cityName = [[NSMutableAttributedString alloc] initWithString:city];
+        
+        [cityName addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, cityName.length)];
+        [cityName addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, cityName.length)];
+        
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{city}"] withAttributedString:cityName];
+    }
     
-    NSMutableAttributedString* cityName = [[NSMutableAttributedString alloc] initWithString:city];
+    if ([attrFillerText.string rangeOfString:@"{today_forecast}"].location != NSNotFound){
+        NSMutableAttributedString* todayForecastTemp = [[NSMutableAttributedString alloc] initWithString:todayForecast];
+        [todayForecastTemp addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, todayForecastTemp.length)];
+        [todayForecastTemp addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, todayForecastTemp.length)];
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{today_forecast}"] withAttributedString:todayForecastTemp];
+    }
     
-    [cityName addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, cityName.length)];
-    [cityName addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, cityName.length)];
+    if ([attrFillerText.string rangeOfString:@"{yesterday_forecast}"].location != NSNotFound){
+        NSMutableAttributedString* yesterdayForecastTemp = [[NSMutableAttributedString alloc] initWithString:yesterdayWeather];
+        [yesterdayForecastTemp addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, yesterdayForecastTemp.length)];
+        [yesterdayForecastTemp addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, yesterdayForecastTemp.length)];
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{yesterday_forecast}"] withAttributedString:yesterdayForecastTemp];
+    }
     
-    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{1}"] withAttributedString:cityName];
+    if ([attrFillerText.string rangeOfString:@"{hotter_colder}"].location != NSNotFound){
+        NSMutableAttributedString* yesterdayCompare = [[NSMutableAttributedString alloc] initWithString:relativeTo];
+        [yesterdayCompare addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, yesterdayCompare.length)];
+        [yesterdayCompare addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, yesterdayCompare.length)];
+   
+        NSMutableAttributedString* preposition = [[NSMutableAttributedString alloc] initWithString:relativePreposition];
+        [preposition addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, preposition.length)];
+        [preposition addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, preposition.length)];
+        
+        [yesterdayCompare appendAttributedString:preposition];
+        
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{hotter_colder}"] withAttributedString:yesterdayCompare];
+    }
     
-    NSMutableAttributedString* todayForecastTemp = [[NSMutableAttributedString alloc] initWithString:todayForecast];
-    [todayForecastTemp addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, todayForecastTemp.length)];
-    [todayForecastTemp addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, todayForecastTemp.length)];
-    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{2}"] withAttributedString:todayForecastTemp];
+    if ([attrFillerText.string rangeOfString:@"{current_temp}"].location != NSNotFound){
+        NSMutableAttributedString* currentTemp = [[NSMutableAttributedString alloc] initWithString:currentFeel];
+        [currentTemp addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentTemp.length)];
+        [currentTemp addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentTemp.length)];
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{current_temp}"] withAttributedString:currentTemp];
+    }
     
-    NSMutableAttributedString* yesterdayCompare = [[NSMutableAttributedString alloc] initWithString:relativeTo];
-    [yesterdayCompare addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, yesterdayCompare.length)];
-    [yesterdayCompare addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, yesterdayCompare.length)];
-    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{3}"] withAttributedString:yesterdayCompare];
+    if ([attrFillerText.string rangeOfString:@"{weather_cond}"].location != NSNotFound){
+        NSMutableAttributedString* currentWeather = [[NSMutableAttributedString alloc] initWithString:weatherCond];
+        [currentWeather addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentWeather.length)];
+        [currentWeather addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentWeather.length)];
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{weather_cond}"] withAttributedString:currentWeather];
+    }
     
+    if ([attrFillerText.string rangeOfString:@"{wind_cond}"].location != NSNotFound){
+        NSMutableAttributedString* currentWind = [[NSMutableAttributedString alloc] initWithString:windDesc];
+        [currentWind addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentWind.length)];
+        [currentWind addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentWind.length)];
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{wind_cond}"] withAttributedString:currentWind];
+    }
     
-    NSMutableAttributedString* currentTemp = [[NSMutableAttributedString alloc] initWithString:currentFeel];
-    [currentTemp addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentTemp.length)];
-    [currentTemp addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentTemp.length)];
-    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{4}"] withAttributedString:currentTemp];
+    if ([attrFillerText.string rangeOfString:@"{wind_speed}"].location != NSNotFound){        
+        NSMutableAttributedString* currentWindSpeed = [[NSMutableAttributedString alloc] initWithString:windSpeed];
+        [currentWindSpeed addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, currentWindSpeed.length)];
+        [currentWindSpeed addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, currentWindSpeed.length)];
+        [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{wind_speed}"] withAttributedString:currentWindSpeed];
+    }
     
-    NSMutableAttributedString* currentWeather = [[NSMutableAttributedString alloc] initWithString:weatherCond];
-    [currentWeather addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentWeather.length)];
-    [currentWeather addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentWeather.length)];
-    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{5}"] withAttributedString:currentWeather];
-    
-    NSMutableAttributedString* currentWind = [[NSMutableAttributedString alloc] initWithString:windDesc];
-    [currentWind addAttribute:NSFontAttributeName value:specialFont range:NSMakeRange(0, currentWind.length)];
-    [currentWind addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, currentWind.length)];
-    [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{6}"] withAttributedString:currentWind];
     
     NSInteger strLength = [attrFillerText length];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -108,17 +130,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loading];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"noisy.gif"]]];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 20000;
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-    
-    //set default celcius ferenheight switch
-    [self.cfSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]];
 
 	weatherService = [[WeatherService alloc]initWithViewController:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    if (current != nil && yesterday != nil && tomorrow != nil){
+        [self updateCurrentWeather:current yesterday:yesterday tomorrow:tomorrow];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,13 +158,6 @@
     double lat = [firstLocation coordinate].latitude;
     double lng = [firstLocation coordinate].longitude;
     [weatherService getCurrentWeatherForLatitude:lat longitude:lng];
-}
-
-- (IBAction)cfValueSwitched:(id)sender {
-    UISwitch* s = (UISwitch*)sender;
-    [[NSUserDefaults standardUserDefaults]setBool:s.isOn forKey:@"isMetric"];
-    [self updateCurrentWeather:current yesterday:yesterday tomorrow:tomorrow];
-
 }
 
 -(void)setProgress:(float)progress{
@@ -187,24 +205,13 @@
     double todayAverage = (currentHigh + currentLow)/2;
     double yesterdayAverage = (yesterdayHigh + yesterdayLow)/2;
     NSString* yesterdayTempDescription = @"similar";
-    NSString* yesterdayTempPreposition = @"to";
+    NSString* yesterdayTempPreposition = @" to";
     if (todayAverage - yesterdayAverage > 3){
         yesterdayTempDescription = @"hotter";
-        yesterdayTempPreposition = @"than";
+        yesterdayTempPreposition = @" than";
     }else if (todayAverage - yesterdayAverage < -3){
         yesterdayTempDescription = @"cooler";
-        yesterdayTempPreposition = @"than";
-    }
-    
-    //tomorrow weather
-    double tomorrowAverage = (tomorrowHigh + tomorrowLow)/2;
-    NSString* tomorrowTempDescription = @"similar to";
-    if (todayAverage - tomorrowAverage > 3){
-        tomorrowTempDescription = @"Hotter than";
-    }else if (todayAverage - tomorrowAverage < -3){
-        tomorrowTempDescription = @"Cooler than";
-    }else{
-        tomorrowTempDescription = @"Similar to";
+        yesterdayTempPreposition = @" than";
     }
     
     NSString* windDescription = @"wind is";
@@ -228,7 +235,6 @@
     
     
     [UIView animateWithDuration:2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self loaded];
     } completion:^(BOOL finished){
     }];
     

@@ -19,8 +19,6 @@
     NSString* currentCity;
 }
 @property (weak, nonatomic) IBOutlet UILabel *weatherText;
-- (IBAction)cfValueSwitched:(id)sender;
-@property (weak, nonatomic) IBOutlet UISwitch *cfSwitch;
 -(void)updateCityName:(NSString*)name;
 -(void)updateCurrentWeather:(Weather*)cw yesterday:(Weather*)yw tomorrow:(Weather*)tw;
 -(void)setProgress:(float)progress;
