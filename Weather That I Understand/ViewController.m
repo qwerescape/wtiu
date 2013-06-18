@@ -35,8 +35,8 @@
 
     UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:20.0f];
     UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
-    UIColor *normalFontColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
-    //UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
+//    UIColor *normalFontColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
     UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
     
     //get user string, if not, use default
@@ -136,7 +136,8 @@
     locationManager.distanceFilter = 20000;
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-
+    self.weatherText.alpha = 0;
+    self.buttonView.alpha = 0;
 	weatherService = [[WeatherService alloc]initWithViewController:self];
 }
 
@@ -234,7 +235,9 @@
                 windSpeed:[NSString stringWithFormat:@"%.0f %@", currentWind, windUnit]];
     
     
-    [UIView animateWithDuration:2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.weatherText.alpha = 1;
+        self.buttonView.alpha = 1;
     } completion:^(BOOL finished){
     }];
     

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditController : UIViewController
+@interface EditController : UIViewController{
+    CGRect originalTextViewFrame;
+}
 @property (weak, nonatomic) IBOutlet UITextView *editTextBox;
 @property (weak, nonatomic) IBOutlet UISwitch *cfSwitch;
 - (IBAction)cfValueSwitched:(id)sender;
 - (IBAction)donePressed:(id)sender;
+- (IBAction)resetMessage:(id)sender;
+- (IBAction)closeKeyboard:(id)sender;
 @end

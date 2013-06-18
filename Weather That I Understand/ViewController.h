@@ -22,4 +22,5 @@
 -(void)updateCityName:(NSString*)name;
 -(void)updateCurrentWeather:(Weather*)cw yesterday:(Weather*)yw tomorrow:(Weather*)tw;
 -(void)setProgress:(float)progress;
+@property (weak, nonatomic) IBOutlet UIView *buttonView;
 @end
