@@ -9,13 +9,15 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="You are in San Francisoc, beautiful. Today will be a little windy and what not" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="292" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-fS-Jtd" userLabel="weather textview">
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.49999999999999961"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="292" id="JDA-zV-xtM"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" type="user" id="csg-z3-dQ9"/>
+                                    <constraint firstAttribute="height" priority="1" constant="21" type="user" id="dcd-6T-yEK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -61,8 +63,8 @@
                                     <constraint firstItem="eeI-oC-wVp" firstAttribute="leading" secondItem="ojz-G8-ZNx" secondAttribute="leading" constant="63" id="Coc-yy-yZs"/>
                                     <constraint firstItem="vNV-GY-60S" firstAttribute="leading" secondItem="ojz-G8-ZNx" secondAttribute="leading" type="default" id="Esp-Lg-ypa"/>
                                     <constraint firstItem="eeI-oC-wVp" firstAttribute="baseline" secondItem="vNV-GY-60S" secondAttribute="baseline" type="default" id="S3I-Wj-gPb"/>
-                                    <constraint firstAttribute="bottom" secondItem="vNV-GY-60S" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cDB-2X-d2e"/>
-                                    <constraint firstItem="vNV-GY-60S" firstAttribute="top" secondItem="ojz-G8-ZNx" secondAttribute="top" constant="20" symbolic="YES" type="default" id="sJd-EP-aVx"/>
+                                    <constraint firstAttribute="bottom" secondItem="vNV-GY-60S" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="cDB-2X-d2e"/>
+                                    <constraint firstItem="vNV-GY-60S" firstAttribute="top" secondItem="ojz-G8-ZNx" secondAttribute="top" constant="20" symbolic="YES" type="user" id="sJd-EP-aVx"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -73,6 +75,7 @@
                             <constraint firstItem="eSm-fS-Jtd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="29" type="user" id="K6d-EW-6eC"/>
                             <constraint firstItem="eSm-fS-Jtd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hpT-wt-5ep"/>
                             <constraint firstItem="ojz-G8-ZNx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iVy-Ru-mXo"/>
+                            <constraint firstItem="ojz-G8-ZNx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eSm-fS-Jtd" secondAttribute="bottom" constant="10" type="user" id="jx4-mc-vjH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4nS-F3-daL">
@@ -92,7 +95,7 @@
             <objects>
                 <viewController id="baG-SP-DLE" customClass="EditController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wee-Zu-4rI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jxe-EY-qcH">
@@ -118,10 +121,11 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgq-fJ-Lr4">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="1YZ-Ws-Vm7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="347" type="user" id="KQ8-OK-Agp"/>
                                     <constraint firstAttribute="width" constant="299" id="WKP-iW-rZf"/>
+                                    <constraint firstAttribute="height" constant="347" id="jxP-mv-sj1"/>
                                 </constraints>
-                                <color key="textColor" patternImage="E9CE4C7B-17A9-44C0-AB3A-1DD139457EB5" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="21EA2A76-E302-409C-AB1B-342B05970B96" colorSpace="pattern"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
@@ -142,14 +146,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ou7-q8-cGm" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="7w6-SS-QTQ"/>
                             <constraint firstItem="vgq-fJ-Lr4" firstAttribute="leading" secondItem="4XN-HN-wZE" secondAttribute="leading" type="default" id="DYy-ua-To0"/>
                             <constraint firstItem="Jxe-EY-qcH" firstAttribute="leading" secondItem="wee-Zu-4rI" secondAttribute="leading" type="default" id="E5y-IH-C7k"/>
+                            <constraint firstItem="4XN-HN-wZE" firstAttribute="top" secondItem="Ou7-q8-cGm" secondAttribute="top" type="default" id="K0L-H1-80i"/>
                             <constraint firstItem="vgq-fJ-Lr4" firstAttribute="leading" secondItem="wee-Zu-4rI" secondAttribute="leading" constant="10" id="R7z-JM-zPa"/>
                             <constraint firstItem="vgq-fJ-Lr4" firstAttribute="top" secondItem="wee-Zu-4rI" secondAttribute="top" constant="50" id="ZX6-Wt-jbf"/>
-                            <constraint firstItem="Ou7-q8-cGm" firstAttribute="top" secondItem="vgq-fJ-Lr4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bT8-Lo-igp"/>
                             <constraint firstItem="Jxe-EY-qcH" firstAttribute="trailing" secondItem="wee-Zu-4rI" secondAttribute="trailing" type="default" id="k7A-HR-PpS"/>
                             <constraint firstItem="Ou7-q8-cGm" firstAttribute="trailing" secondItem="vgq-fJ-Lr4" secondAttribute="trailing" type="default" id="mSG-ta-PLp"/>
-                            <constraint firstItem="4XN-HN-wZE" firstAttribute="top" secondItem="vgq-fJ-Lr4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qc3-ad-j9j"/>
                             <constraint firstItem="Jxe-EY-qcH" firstAttribute="top" secondItem="wee-Zu-4rI" secondAttribute="top" type="default" id="wBg-Aa-lUA"/>
                         </constraints>
                     </view>
@@ -164,7 +168,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="E9CE4C7B-17A9-44C0-AB3A-1DD139457EB5" width="320" height="460">
+        <image name="21EA2A76-E302-409C-AB1B-342B05970B96" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -10025,6 +10029,6 @@ CP6lAAAAAAAABAEAAAAAAAAAQgAAAAAAAAAAAAAAAAAI/qc
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
