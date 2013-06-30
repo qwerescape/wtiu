@@ -12,12 +12,12 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="You are in San Francisoc, beautiful. Today will be a little windy and what not" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="292" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-fS-Jtd" userLabel="weather textview">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Weather Text" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="292" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-fS-Jtd" userLabel="weather textview">
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.49999999999999961"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="292" id="JDA-zV-xtM"/>
+                                    <constraint firstAttribute="height" priority="1" constant="78" type="user" id="V07-0c-4tq"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" type="user" id="csg-z3-dQ9"/>
-                                    <constraint firstAttribute="height" priority="1" constant="21" type="user" id="dcd-6T-yEK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -34,7 +34,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                         <state key="normal" title="Edit">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,7 +50,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                         <state key="normal" title="Refresh">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -67,12 +67,24 @@
                                     <constraint firstItem="vNV-GY-60S" firstAttribute="top" secondItem="ojz-G8-ZNx" secondAttribute="top" constant="20" symbolic="YES" type="user" id="sJd-EP-aVx"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0%" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibM-Ue-s5O" userLabel="loading">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="297" id="8I6-9o-w3p"/>
+                                    <constraint firstAttribute="height" constant="30" id="INg-4H-UZp"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="297" type="user" id="nHZ-G4-gQ9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ibM-Ue-s5O" secondAttribute="centerY" type="user" id="8Rl-LQ-dOi"/>
                             <constraint firstAttribute="bottom" secondItem="ojz-G8-ZNx" secondAttribute="bottom" constant="18" type="user" id="CeT-8L-wA2"/>
                             <constraint firstAttribute="trailing" secondItem="ojz-G8-ZNx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="G7h-qm-i7A"/>
-                            <constraint firstItem="eSm-fS-Jtd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="29" type="user" id="K6d-EW-6eC"/>
+                            <constraint firstItem="eSm-fS-Jtd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="user" id="K6d-EW-6eC"/>
+                            <constraint firstAttribute="centerX" secondItem="ibM-Ue-s5O" secondAttribute="centerX" type="user" id="Lyb-YI-Zy3"/>
                             <constraint firstItem="eSm-fS-Jtd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hpT-wt-5ep"/>
                             <constraint firstItem="ojz-G8-ZNx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iVy-Ru-mXo"/>
                             <constraint firstItem="ojz-G8-ZNx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eSm-fS-Jtd" secondAttribute="bottom" constant="10" type="user" id="jx4-mc-vjH"/>
@@ -83,6 +95,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonView" destination="ojz-G8-ZNx" id="Hvd-3v-UJJ"/>
+                        <outlet property="loadingLabel" destination="ibM-Ue-s5O" id="5OZ-ty-rLk"/>
                         <outlet property="weatherText" destination="eSm-fS-Jtd" id="4Ca-Pd-yAj"/>
                     </connections>
                 </viewController>
@@ -125,7 +138,7 @@
                                     <constraint firstAttribute="width" constant="299" id="WKP-iW-rZf"/>
                                     <constraint firstAttribute="height" constant="347" id="jxP-mv-sj1"/>
                                 </constraints>
-                                <color key="textColor" patternImage="21EA2A76-E302-409C-AB1B-342B05970B96" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="C09DF14D-0BC1-49C6-B303-BC2E18F06E03" colorSpace="pattern"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
@@ -135,25 +148,15 @@
                                     <action selector="cfValueSwitched:" destination="baG-SP-DLE" eventType="valueChanged" id="Gxm-7G-QR2"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-HN-wZE">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="9Xa-RZ-z0X"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ou7-q8-cGm" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="7w6-SS-QTQ"/>
-                            <constraint firstItem="vgq-fJ-Lr4" firstAttribute="leading" secondItem="4XN-HN-wZE" secondAttribute="leading" type="default" id="DYy-ua-To0"/>
                             <constraint firstItem="Jxe-EY-qcH" firstAttribute="leading" secondItem="wee-Zu-4rI" secondAttribute="leading" type="default" id="E5y-IH-C7k"/>
-                            <constraint firstItem="4XN-HN-wZE" firstAttribute="top" secondItem="Ou7-q8-cGm" secondAttribute="top" type="default" id="K0L-H1-80i"/>
                             <constraint firstItem="vgq-fJ-Lr4" firstAttribute="leading" secondItem="wee-Zu-4rI" secondAttribute="leading" constant="10" id="R7z-JM-zPa"/>
                             <constraint firstItem="vgq-fJ-Lr4" firstAttribute="top" secondItem="wee-Zu-4rI" secondAttribute="top" constant="50" id="ZX6-Wt-jbf"/>
                             <constraint firstItem="Jxe-EY-qcH" firstAttribute="trailing" secondItem="wee-Zu-4rI" secondAttribute="trailing" type="default" id="k7A-HR-PpS"/>
-                            <constraint firstItem="Ou7-q8-cGm" firstAttribute="trailing" secondItem="vgq-fJ-Lr4" secondAttribute="trailing" type="default" id="mSG-ta-PLp"/>
+                            <constraint firstItem="Ou7-q8-cGm" firstAttribute="centerX" secondItem="Jxe-EY-qcH" secondAttribute="centerX" type="default" id="pey-SM-6mn"/>
                             <constraint firstItem="Jxe-EY-qcH" firstAttribute="top" secondItem="wee-Zu-4rI" secondAttribute="top" type="default" id="wBg-Aa-lUA"/>
                         </constraints>
                     </view>
@@ -168,7 +171,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="21EA2A76-E302-409C-AB1B-342B05970B96" width="320" height="460">
+        <image name="C09DF14D-0BC1-49C6-B303-BC2E18F06E03" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -10022,6 +10025,7 @@ CP6lAAAAAAAABAEAAAAAAAAAQgAAAAAAAAAAAAAAAAAI/qc
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="weatherText" candidateClass="UILabel"/>
             </relationships>
         </class>

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *weatherText;
 -(void)updateCityName:(NSString*)name;
 -(void)updateCurrentWeather:(Weather*)cw yesterday:(Weather*)yw tomorrow:(Weather*)tw;
+@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 -(void)setProgress:(float)progress;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @end

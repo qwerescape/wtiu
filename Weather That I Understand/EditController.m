@@ -29,7 +29,7 @@
 - (void)highlightKeywords:(NSString*)userMessage
 {
     UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
-    UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
+    UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:21.0f];
     UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
         
     NSMutableAttributedString* message = [[NSMutableAttributedString alloc] initWithString:userMessage];
@@ -43,6 +43,7 @@
         if ([message.string rangeOfString:keyword].location != NSNotFound){
             NSMutableAttributedString* attributedKeyword = [[NSMutableAttributedString alloc] initWithString:keyword];
             [attributedKeyword addAttribute:NSForegroundColorAttributeName value:specialFontColor range:NSMakeRange(0, attributedKeyword.length)];
+            [attributedKeyword addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, attributedKeyword.length)];
             [message replaceCharactersInRange:[message.string rangeOfString:keyword] withAttributedString:attributedKeyword];
         }
     }    

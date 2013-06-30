@@ -51,8 +51,11 @@
     // receivedData is an instance variable declared elsewhere.
     [receivedData appendData:data];
     NSNumber *resourceLength = [NSNumber numberWithUnsignedInteger:[receivedData length]];
-    _progressCallback([resourceLength floatValue] / fileSize);
-    NSLog(@"progress is %.00f / %ld \n", [resourceLength floatValue], fileSize);
+    int progress = [resourceLength integerValue] / fileSize;
+    if (progress >= 100){
+        progress = 99;
+    }
+    _progressCallback(progress);
 }
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error

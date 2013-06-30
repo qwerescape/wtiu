@@ -33,11 +33,11 @@
               windDesc:(NSString*)windDesc
              windSpeed:(NSString*)windSpeed{
 
-    UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:20.0f];
+    UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:23.0f];
     UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
 //    UIColor *normalFontColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];
-    UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
+    UIFont *normalFont=[UIFont fontWithName:@"HelveticaNeue-Light" size:21.0f];
     
     //get user string, if not, use default
     NSString* displayString = [[NSUserDefaults standardUserDefaults]stringForKey:@"user_message"];
@@ -131,6 +131,7 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"noisy.gif"]]];
+    [self.loadingLabel setText:@"Locating you..."];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 20000;
@@ -158,11 +159,12 @@
     CLLocation* firstLocation = [locations objectAtIndex:0];
     double lat = [firstLocation coordinate].latitude;
     double lng = [firstLocation coordinate].longitude;
+    [self. loadingLabel setText:@"Getting weather data..."];
     [weatherService getCurrentWeatherForLatitude:lat longitude:lng];
 }
 
 -(void)setProgress:(float)progress{
-    
+    //[self.loadingLabel setText:[NSString stringWithFormat:@"%f%%", progress]];
 }
 
 -(void)updateCityName:(NSString *)name{
@@ -234,7 +236,7 @@
                  windDesc:windDescription
                 windSpeed:[NSString stringWithFormat:@"%.0f %@", currentWind, windUnit]];
     
-    
+    self.loadingLabel.alpha = 0;
     [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.weatherText.alpha = 1;
         self.buttonView.alpha = 1;
