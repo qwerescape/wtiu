@@ -8,25 +8,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Weather That I Understand/ViewController.m"
-         timestampString = "394312098.775794"
+         timestampString = "394336449.216834"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "147"
-         endingLineNumber = "147"
-         landmarkName = "-viewWillAppear:"
+         startingLineNumber = "235"
+         endingLineNumber = "235"
+         landmarkName = "-setProgress:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Weather That I Understand/ViewController.m"
-         timestampString = "394312098.775794"
+         filePath = "Weather That I Understand/WeatherService.m"
+         timestampString = "394335923.590527"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
-         landmarkName = "-setProgress:"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
+         landmarkName = "-updateWeather"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Weather That I Understand/WeatherService.m"
+         timestampString = "394335940.659343"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
+         landmarkName = "-getTodayWeatherData:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -19,6 +19,7 @@
            weatherCond:(NSString*)weatherCond
               windDesc:(NSString*)windDesc
              windSpeed:(NSString*)windSpeed;
+-(void)refresh;
 @end
 
 @implementation ViewController
@@ -44,6 +45,7 @@
     if (displayString == nil){
         displayString = [Weather getDefaultMessageString];
     }
+    NSLog(displayString);
     
     NSString* fillerText = displayString;
     NSMutableAttributedString* attrFillerText = [[NSMutableAttributedString alloc] initWithString:fillerText];
@@ -142,10 +144,28 @@
 	weatherService = [[WeatherService alloc]initWithViewController:self];
 }
 
+- (void) refresh{
+//    [self.loadingLabel setText:@"Locating you..."];
+//    locationManager = [[CLLocationManager alloc] init];
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    locationManager.distanceFilter = 20000;
+//    locationManager.delegate = self;
+//    [locationManager startUpdatingLocation];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
-    if (current != nil && yesterday != nil && tomorrow != nil){
-        [self updateCurrentWeather:current yesterday:yesterday tomorrow:tomorrow];
+    [self.loadingLabel setTextAlignment:NSTextAlignmentCenter];
+    if (current != nil && yesterday != nil){
+        [self updateCurrentWeather:current yesterday:yesterday tomorrow:nil];
     }
+//    [[NSNotificationCenter defaultCenter]addObserver:self
+//                                            selector:@selector(refresh)
+//                                                name:UIApplicationDidBecomeActiveNotification
+//                                              object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+//    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -159,9 +179,57 @@
     CLLocation* firstLocation = [locations objectAtIndex:0];
     double lat = [firstLocation coordinate].latitude;
     double lng = [firstLocation coordinate].longitude;
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:firstLocation
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                       if (error){
+                           currentCity = @"in a place off the map";                           
+                       }
+                       
+                       if(placemarks && placemarks.count > 0)
+                       {
+                           //do something
+                           CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                           currentCity = [topResult locality];
+                       }else{
+                           currentCity = @"in a place off the map";
+                       }
+                   }];
     [self. loadingLabel setText:@"Getting weather data..."];
     [weatherService getCurrentWeatherForLatitude:lat longitude:lng];
 }
+- (void)locationManager:(CLLocationManager *)manager didFailWithError: (NSError *)error {
+    
+    NSString *errorString;
+    [manager stopUpdatingLocation];
+    NSLog(@"Error: %@",[error localizedDescription]);
+    switch([error code]) {
+        case kCLErrorDenied:
+            //Access denied by user
+            errorString = @"Please enable location service in Settings -> Privacy and restart this app";
+            //Do something...
+            break;
+        case kCLErrorLocationUnknown:
+            //Probably temporary...
+            errorString = @"Location data unavailable";
+            //Do something else...
+            break;
+        default:
+            errorString = @"An unknown error has occurred";
+            break;
+    }
+    [self.loadingLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.loadingLabel setText:errorString];
+
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:errorString delegate:self cancelButtonTitle:@"Settings" otherButtonTitles:@"Exit App", nil];
+//    alert.cancelButtonIndex = 1;
+//    [alert show];
+}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 1){
+//        NSLog(@"hooray");
+//    }
+//}
 
 -(void)setProgress:(float)progress{
     //[self.loadingLabel setText:[NSString stringWithFormat:@"%f%%", progress]];
@@ -174,7 +242,6 @@
 -(void)updateCurrentWeather:(Weather *)cw yesterday:(Weather *)yw tomorrow:(Weather *)tw{
     current = cw;
     yesterday = yw;
-    tomorrow = tw;
     
     double currentFeelsLike = cw.cfeelLike;
     double currentHigh = cw.chigh;
@@ -183,9 +250,6 @@
     
     double yesterdayHigh = yw.chigh;
     double yesterdayLow = yw.clow;
-    
-    double tomorrowHigh = tw.chigh;
-    double tomorrowLow = tw.clow;
     
     NSString* windUnit = @"km/h";
     
@@ -198,8 +262,6 @@
         yesterdayHigh = yw.fhigh;
         yesterdayLow = yw.flow;
 
-        tomorrowHigh = tw.fhigh;
-        tomorrowLow = tw.flow;
         windUnit = @"miles/h";
         
     }

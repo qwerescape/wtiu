@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @class ViewController;
+@class Weather;
 @interface WeatherService : NSObject{
-    NSData* lastReceivedData;
     ViewController* viewController;
+    Weather* yesterdayWeather;
+    Weather* todayWeather;
 }
 -(id)initWithViewController: (ViewController*)vc;
 -(void)getCurrentWeatherForLatitude:(double)lat longitude:(double)lng;

@@ -22,5 +22,6 @@
 @property(assign, nonatomic) double cwind;
 @property(assign, nonatomic) double fwind;
 +(NSString*)getDefaultMessageString;
+-(id)init;
 
 @end
