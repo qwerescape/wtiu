@@ -45,7 +45,6 @@
     if (displayString == nil){
         displayString = [Weather getDefaultMessageString];
     }
-    NSLog(displayString);
     
     NSString* fillerText = displayString;
     NSMutableAttributedString* attrFillerText = [[NSMutableAttributedString alloc] initWithString:fillerText];
@@ -133,39 +132,54 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"noisy.gif"]]];
-    [self.loadingLabel setText:@"Locating you..."];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 20000;
     locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
-    self.weatherText.alpha = 0;
-    self.buttonView.alpha = 0;
 	weatherService = [[WeatherService alloc]initWithViewController:self];
+    current = nil;
+    yesterday = nil;
+    [self refresh];
 }
 
 - (void) refresh{
-//    [self.loadingLabel setText:@"Locating you..."];
-//    locationManager = [[CLLocationManager alloc] init];
-//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    locationManager.distanceFilter = 20000;
-//    locationManager.delegate = self;
-//    [locationManager startUpdatingLocation];
+    //if current and yesterday weathers are nil or if the data is too old
+    if (self.isViewLoaded && self.view.window){
+        if (current == nil || yesterday == nil || lastLoadedDate == nil || [lastLoadedDate timeIntervalSinceNow] < -3600){
+            self.weatherText.alpha = 0;
+            self.buttonView.alpha = 0;
+            [self.loadingLabel setTextAlignment:NSTextAlignmentCenter];
+            [self.loadingLabel setText:@"Locating you..."];
+            self.loadingLabel.alpha = 1;
+            lastLoadedDate = [NSDate date];
+            [locationManager startUpdatingLocation];
+        }else if (current != nil && yesterday != nil){
+            [self updateCurrentWeather:current yesterday:yesterday tomorrow:nil];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self.loadingLabel setTextAlignment:NSTextAlignmentCenter];
-    if (current != nil && yesterday != nil){
-        [self updateCurrentWeather:current yesterday:yesterday tomorrow:nil];
-    }
-//    [[NSNotificationCenter defaultCenter]addObserver:self
-//                                            selector:@selector(refresh)
-//                                                name:UIApplicationDidBecomeActiveNotification
-//                                              object:nil];
+    NSLog(@"view will appear");
+    [super viewWillAppear:animated];
+    self.weatherText.alpha = 0;
+    self.buttonView.alpha = 0;
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(refresh)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                              object:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"view did appear");
+    [super viewDidAppear:animated];
+    [self refresh];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-//    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    NSLog(@"view will disappear");
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -175,6 +189,7 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    NSLog(@"located");
     [locationManager stopUpdatingLocation];
     CLLocation* firstLocation = [locations objectAtIndex:0];
     double lat = [firstLocation coordinate].latitude;
@@ -194,9 +209,9 @@
                        }else{
                            currentCity = @"in a place off the map";
                        }
+                       [self. loadingLabel setText:@"Getting weather data..."];
+                       [weatherService getCurrentWeatherForLatitude:lat longitude:lng];
                    }];
-    [self. loadingLabel setText:@"Getting weather data..."];
-    [weatherService getCurrentWeatherForLatitude:lat longitude:lng];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError: (NSError *)error {
     
@@ -220,16 +235,7 @@
     }
     [self.loadingLabel setTextAlignment:NSTextAlignmentLeft];
     [self.loadingLabel setText:errorString];
-
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:errorString delegate:self cancelButtonTitle:@"Settings" otherButtonTitles:@"Exit App", nil];
-//    alert.cancelButtonIndex = 1;
-//    [alert show];
 }
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    if (buttonIndex == 1){
-//        NSLog(@"hooray");
-//    }
-//}
 
 -(void)setProgress:(float)progress{
     //[self.loadingLabel setText:[NSString stringWithFormat:@"%f%%", progress]];
@@ -299,7 +305,7 @@
                 windSpeed:[NSString stringWithFormat:@"%.0f %@", currentWind, windUnit]];
     
     self.loadingLabel.alpha = 0;
-    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.weatherText.alpha = 1;
         self.buttonView.alpha = 1;
     } completion:^(BOOL finished){

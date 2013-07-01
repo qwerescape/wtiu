@@ -12,12 +12,10 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Weather Text" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="292" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-fS-Jtd" userLabel="weather textview">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" text="Weather Text" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="292" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-fS-Jtd" userLabel="weather textview">
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.49999999999999961"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="292" id="JDA-zV-xtM"/>
-                                    <constraint firstAttribute="height" priority="1" constant="78" type="user" id="V07-0c-4tq"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" type="user" id="csg-z3-dQ9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -30,10 +28,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-GY-60S">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="41" id="lAo-DY-Yco"/>
+                                            <constraint firstAttribute="height" constant="32" id="DzA-pQ-js4"/>
+                                            <constraint firstAttribute="width" constant="32" id="xFd-DE-uC6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
-                                        <state key="normal" title="Edit">
+                                        <state key="normal" backgroundImage="edit@2x.png">
                                             <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="highlighted">
@@ -43,28 +42,12 @@
                                             <segue destination="baG-SP-DLE" kind="modal" modalTransitionStyle="flipHorizontal" id="0Yg-ut-MoO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-oC-wVp">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="13T-80-Hbg"/>
-                                            <constraint firstAttribute="width" constant="67" id="aAk-VI-5bl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
-                                        <state key="normal" title="Refresh">
-                                            <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="eeI-oC-wVp" firstAttribute="leading" secondItem="ojz-G8-ZNx" secondAttribute="leading" constant="63" id="Coc-yy-yZs"/>
-                                    <constraint firstItem="vNV-GY-60S" firstAttribute="leading" secondItem="ojz-G8-ZNx" secondAttribute="leading" type="default" id="Esp-Lg-ypa"/>
-                                    <constraint firstItem="eeI-oC-wVp" firstAttribute="baseline" secondItem="vNV-GY-60S" secondAttribute="baseline" type="default" id="S3I-Wj-gPb"/>
-                                    <constraint firstAttribute="bottom" secondItem="vNV-GY-60S" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="cDB-2X-d2e"/>
-                                    <constraint firstItem="vNV-GY-60S" firstAttribute="top" secondItem="ojz-G8-ZNx" secondAttribute="top" constant="20" symbolic="YES" type="user" id="sJd-EP-aVx"/>
+                                    <constraint firstItem="vNV-GY-60S" firstAttribute="centerY" secondItem="ojz-G8-ZNx" secondAttribute="centerY" type="default" id="Qb1-ov-8tu"/>
+                                    <constraint firstAttribute="height" constant="34" type="user" id="XEx-19-lMs"/>
+                                    <constraint firstItem="vNV-GY-60S" firstAttribute="centerX" secondItem="ojz-G8-ZNx" secondAttribute="centerX" type="default" id="oag-m2-B3B"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0%" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="297" translatesAutoresizingMaskIntoConstraints="NO" id="ibM-Ue-s5O" userLabel="loading">
@@ -80,13 +63,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="ibM-Ue-s5O" secondAttribute="centerY" type="user" id="8Rl-LQ-dOi"/>
-                            <constraint firstAttribute="bottom" secondItem="ojz-G8-ZNx" secondAttribute="bottom" constant="18" type="user" id="CeT-8L-wA2"/>
                             <constraint firstAttribute="trailing" secondItem="ojz-G8-ZNx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="G7h-qm-i7A"/>
-                            <constraint firstItem="eSm-fS-Jtd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="user" id="K6d-EW-6eC"/>
+                            <constraint firstItem="eSm-fS-Jtd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="21" type="user" id="K6d-EW-6eC"/>
                             <constraint firstAttribute="centerX" secondItem="ibM-Ue-s5O" secondAttribute="centerX" type="user" id="Lyb-YI-Zy3"/>
-                            <constraint firstItem="eSm-fS-Jtd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hpT-wt-5ep"/>
+                            <constraint firstAttribute="bottom" secondItem="ojz-G8-ZNx" secondAttribute="bottom" constant="13" type="user" id="aZa-uP-QAh"/>
+                            <constraint firstItem="eSm-fS-Jtd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" type="user" id="hpT-wt-5ep"/>
                             <constraint firstItem="ojz-G8-ZNx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iVy-Ru-mXo"/>
-                            <constraint firstItem="ojz-G8-ZNx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eSm-fS-Jtd" secondAttribute="bottom" constant="10" type="user" id="jx4-mc-vjH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4nS-F3-daL">
@@ -137,7 +119,7 @@
                                     <constraint firstAttribute="width" constant="299" id="WKP-iW-rZf"/>
                                     <constraint firstAttribute="height" constant="347" id="jxP-mv-sj1"/>
                                 </constraints>
-                                <color key="textColor" patternImage="97D9043A-90DA-4966-9FDC-41C75ECC574A" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="AF5BE3E9-5C74-495A-B775-A89854CEDD73" colorSpace="pattern"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
@@ -170,7 +152,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="97D9043A-90DA-4966-9FDC-41C75ECC574A" width="320" height="460">
+        <image name="AF5BE3E9-5C74-495A-B775-A89854CEDD73" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -10004,6 +9986,7 @@ CP5GAAj+TQAI/lUACP5iAAj+ZwAI/mkACP5rAAj+cAAI/ngACP57AAj+gAAI/ogACP6LAAj+nQAI/qAA
 CP6lAAAAAAAABAEAAAAAAAAAQgAAAAAAAAAAAAAAAAAI/qc
 </mutableData>
         </image>
+        <image name="edit@2x.png" width="48" height="48"/>
     </resources>
     <classes>
         <class className="EditController" superclassName="UIViewController">

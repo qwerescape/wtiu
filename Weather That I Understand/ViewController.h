@@ -16,6 +16,7 @@
     Weather* current;
     Weather* yesterday;
     Weather* tomorrow;
+    NSDate* lastLoadedDate;
     NSString* currentCity;
 }
 @property (weak, nonatomic) IBOutlet UILabel *weatherText;
