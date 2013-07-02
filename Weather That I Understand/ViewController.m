@@ -259,19 +259,6 @@
     
     NSString* windUnit = @"km/h";
     
-    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"isMetric"]){
-        currentFeelsLike = cw.ffeelslike;
-        currentHigh = cw.fhigh;
-        currentLow = cw.flow;
-        currentWind = cw.fwind;
-
-        yesterdayHigh = yw.fhigh;
-        yesterdayLow = yw.flow;
-
-        windUnit = @"miles/h";
-        
-    }
-    
     //yesterday's weather
     double todayAverage = (currentHigh + currentLow)/2;
     double yesterdayAverage = (yesterdayHigh + yesterdayLow)/2;
@@ -292,6 +279,19 @@
         windDescription = @"kinda windy";
     }else {
         windDescription = @"really windy";
+    }
+    
+    
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"isMetric"]){
+        currentFeelsLike = cw.ffeelslike;
+        currentHigh = cw.fhigh;
+        currentLow = cw.flow;
+        currentWind = cw.fwind;
+        
+        yesterdayHigh = yw.fhigh;
+        yesterdayLow = yw.flow;
+        
+        windUnit = @"miles/h";
     }
     
     [self setInfoWithCity:currentCity

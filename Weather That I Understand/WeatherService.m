@@ -31,7 +31,7 @@
     //http://api.wunderground.com/api/xxxxx/yesterday/forecast/conditions/q/%f,%f.json
     
     
-    NSURLRequest *currentWeatherRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/xxxxxxxx/%f,%f", lat, lng]]
+    NSURLRequest *currentWeatherRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/272c50e5cbaead39cdaa744c9a2d69e9/%f,%f", lat, lng]]
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:30.0];
     [[[WeatherServiceDelegate alloc]initWithRequest:currentWeatherRequest]startConnection:^(NSMutableData*data){
@@ -55,7 +55,7 @@
     NSDate *yesterday = [cal dateByAddingComponents:components toDate: today options:0];
 
     
-    NSURLRequest *yesterdayWeatherRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/xxxxxxxx/%f,%f,%ld", lat, lng, (long)[yesterday timeIntervalSince1970]]]
+    NSURLRequest *yesterdayWeatherRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/272c50e5cbaead39cdaa744c9a2d69e9/%f,%f,%ld", lat, lng, (long)[yesterday timeIntervalSince1970]]]
                                                          cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                      timeoutInterval:30.0];
     [[[WeatherServiceDelegate alloc]initWithRequest:yesterdayWeatherRequest]startConnection:^(NSMutableData*data){

@@ -28,11 +28,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-GY-60S">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="DzA-pQ-js4"/>
-                                            <constraint firstAttribute="width" constant="32" id="xFd-DE-uC6"/>
+                                            <constraint firstAttribute="width" constant="45" id="5Fg-uW-dkU"/>
+                                            <constraint firstAttribute="height" constant="45" id="DRB-ai-rUx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
-                                        <state key="normal" backgroundImage="edit@2x.png">
+                                        <state key="normal" backgroundImage="edit-icon@2x.png">
                                             <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="highlighted">
@@ -42,12 +42,23 @@
                                             <segue destination="baG-SP-DLE" kind="modal" modalTransitionStyle="flipHorizontal" id="0Yg-ut-MoO"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Powered by Forecast.io" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-LR-Oqv">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="171" id="evH-Uu-iLR"/>
+                                            <constraint firstAttribute="height" constant="21" id="xXz-De-j9m"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="9"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="vNV-GY-60S" firstAttribute="centerY" secondItem="ojz-G8-ZNx" secondAttribute="centerY" type="default" id="Qb1-ov-8tu"/>
-                                    <constraint firstAttribute="height" constant="34" type="user" id="XEx-19-lMs"/>
-                                    <constraint firstItem="vNV-GY-60S" firstAttribute="centerX" secondItem="ojz-G8-ZNx" secondAttribute="centerX" type="default" id="oag-m2-B3B"/>
+                                    <constraint firstAttribute="bottom" secondItem="wu1-LR-Oqv" secondAttribute="bottom" constant="2" id="6zm-M7-hqi"/>
+                                    <constraint firstItem="wu1-LR-Oqv" firstAttribute="centerX" secondItem="ojz-G8-ZNx" secondAttribute="centerX" type="default" id="RQn-ga-URo"/>
+                                    <constraint firstAttribute="height" constant="72" type="user" id="SCh-9S-N7p"/>
+                                    <constraint firstItem="vNV-GY-60S" firstAttribute="top" secondItem="ojz-G8-ZNx" secondAttribute="top" type="default" id="gkN-NJ-2ts"/>
+                                    <constraint firstItem="vNV-GY-60S" firstAttribute="leading" secondItem="ojz-G8-ZNx" secondAttribute="leading" constant="140" id="yOm-3S-Gys"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0%" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="297" translatesAutoresizingMaskIntoConstraints="NO" id="ibM-Ue-s5O" userLabel="loading">
@@ -62,13 +73,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ojz-G8-ZNx" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="1IZ-QW-iFo"/>
                             <constraint firstAttribute="centerY" secondItem="ibM-Ue-s5O" secondAttribute="centerY" type="user" id="8Rl-LQ-dOi"/>
-                            <constraint firstAttribute="trailing" secondItem="ojz-G8-ZNx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="G7h-qm-i7A"/>
+                            <constraint firstAttribute="bottom" secondItem="ojz-G8-ZNx" secondAttribute="bottom" constant="1" type="user" id="AkA-uO-4ft"/>
                             <constraint firstItem="eSm-fS-Jtd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="21" type="user" id="K6d-EW-6eC"/>
                             <constraint firstAttribute="centerX" secondItem="ibM-Ue-s5O" secondAttribute="centerX" type="user" id="Lyb-YI-Zy3"/>
-                            <constraint firstAttribute="bottom" secondItem="ojz-G8-ZNx" secondAttribute="bottom" constant="13" type="user" id="aZa-uP-QAh"/>
                             <constraint firstItem="eSm-fS-Jtd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" type="user" id="hpT-wt-5ep"/>
-                            <constraint firstItem="ojz-G8-ZNx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iVy-Ru-mXo"/>
+                            <constraint firstItem="ojz-G8-ZNx" firstAttribute="centerX" secondItem="ibM-Ue-s5O" secondAttribute="centerX" type="default" id="qEm-Mc-vno"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4nS-F3-daL">
@@ -119,7 +130,7 @@
                                     <constraint firstAttribute="width" constant="299" id="WKP-iW-rZf"/>
                                     <constraint firstAttribute="height" constant="347" id="jxP-mv-sj1"/>
                                 </constraints>
-                                <color key="textColor" patternImage="AF5BE3E9-5C74-495A-B775-A89854CEDD73" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="159E9621-EAB3-4345-985A-E790B67595C0" colorSpace="pattern"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
@@ -152,7 +163,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AF5BE3E9-5C74-495A-B775-A89854CEDD73" width="320" height="460">
+        <image name="159E9621-EAB3-4345-985A-E790B67595C0" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -9986,7 +9997,7 @@ CP5GAAj+TQAI/lUACP5iAAj+ZwAI/mkACP5rAAj+cAAI/ngACP57AAj+gAAI/ogACP6LAAj+nQAI/qAA
 CP6lAAAAAAAABAEAAAAAAAAAQgAAAAAAAAAAAAAAAAAI/qc
 </mutableData>
         </image>
-        <image name="edit@2x.png" width="48" height="48"/>
+        <image name="edit-icon@2x.png" width="90" height="90"/>
     </resources>
     <classes>
         <class className="EditController" superclassName="UIViewController">

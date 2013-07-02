@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		CC2DEC65174C5949000E82BE /* noisy.gif in Resources */ = {isa = PBXBuildFile; fileRef = CC2DEC64174C5949000E82BE /* noisy.gif */; };
-		CC72881A1756F35B00370BF5 /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC7288191756F35B00370BF5 /* edit@2x.png */; };
 		CC72881C1756F36F00370BF5 /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC72881B1756F36F00370BF5 /* refresh@2x.png */; };
 		CC78420A174EF6D10087BD68 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC784209174EF6D10087BD68 /* EditController.m */; };
 		CC8F3F2F177F7F0D00ACC2CD /* celcius@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F2E177F7F0D00ACC2CD /* celcius@2x.png */; };
 		CC8F3F31177F7FB700ACC2CD /* ferenheight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F30177F7FB700ACC2CD /* ferenheight@2x.png */; };
+		CC8F3F351782432D00ACC2CD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F341782432D00ACC2CD /* logo.png */; };
+		CC8F3F371782437200ACC2CD /* logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F361782437200ACC2CD /* logo_small.png */; };
+		CC8F3F3F17825F0D00ACC2CD /* edit-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F3E17825F0D00ACC2CD /* edit-icon@2x.png */; };
 		CCCB25771728AF2B00377BA0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCB25761728AF2B00377BA0 /* CoreLocation.framework */; };
 		CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */; };
 		CCCB257F172B747400377BA0 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCB257E172B747400377BA0 /* Weather.m */; };
@@ -32,12 +34,14 @@
 
 /* Begin PBXFileReference section */
 		CC2DEC64174C5949000E82BE /* noisy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = noisy.gif; sourceTree = "<group>"; };
-		CC7288191756F35B00370BF5 /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
 		CC72881B1756F36F00370BF5 /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
 		CC784208174EF6D10087BD68 /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
 		CC784209174EF6D10087BD68 /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
 		CC8F3F2E177F7F0D00ACC2CD /* celcius@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "celcius@2x.png"; sourceTree = "<group>"; };
 		CC8F3F30177F7FB700ACC2CD /* ferenheight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ferenheight@2x.png"; sourceTree = "<group>"; };
+		CC8F3F341782432D00ACC2CD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		CC8F3F361782437200ACC2CD /* logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_small.png; sourceTree = "<group>"; };
+		CC8F3F3E17825F0D00ACC2CD /* edit-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon@2x.png"; sourceTree = "<group>"; };
 		CCCB25761728AF2B00377BA0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCCB25781728BD5A00377BA0 /* WeatherServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherServiceDelegate.h; sourceTree = "<group>"; };
 		CCCB25791728BD5A00377BA0 /* WeatherServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherServiceDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		CCF2C5E11722263600AFF6BD = {
 			isa = PBXGroup;
 			children = (
+				CC8F3F361782437200ACC2CD /* logo_small.png */,
+				CC8F3F341782432D00ACC2CD /* logo.png */,
 				CCF2C5F31722263600AFF6BD /* Weather That I Understand */,
 				CCF2C5EC1722263600AFF6BD /* Frameworks */,
 				CCF2C5EB1722263600AFF6BD /* Products */,
@@ -131,9 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				CC72881B1756F36F00370BF5 /* refresh@2x.png */,
-				CC7288191756F35B00370BF5 /* edit@2x.png */,
 				CC2DEC64174C5949000E82BE /* noisy.gif */,
 				CC8F3F2E177F7F0D00ACC2CD /* celcius@2x.png */,
+				CC8F3F3E17825F0D00ACC2CD /* edit-icon@2x.png */,
 				CC8F3F30177F7FB700ACC2CD /* ferenheight@2x.png */,
 				CCF2C5F51722263600AFF6BD /* Weather That I Understand-Info.plist */,
 				CCF2C5F61722263600AFF6BD /* InfoPlist.strings */,
@@ -203,10 +209,12 @@
 				CCF2C6041722263600AFF6BD /* Default-568h@2x.png in Resources */,
 				CCF2C6071722263600AFF6BD /* MainStoryboard.storyboard in Resources */,
 				CC2DEC65174C5949000E82BE /* noisy.gif in Resources */,
-				CC72881A1756F35B00370BF5 /* edit@2x.png in Resources */,
 				CC72881C1756F36F00370BF5 /* refresh@2x.png in Resources */,
 				CC8F3F2F177F7F0D00ACC2CD /* celcius@2x.png in Resources */,
 				CC8F3F31177F7FB700ACC2CD /* ferenheight@2x.png in Resources */,
+				CC8F3F351782432D00ACC2CD /* logo.png in Resources */,
+				CC8F3F371782437200ACC2CD /* logo_small.png in Resources */,
+				CC8F3F3F17825F0D00ACC2CD /* edit-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,11 +316,15 @@
 		CCF2C60E1722263600AFF6BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather That I Understand/Weather That I Understand-Prefix.pch";
 				INFOPLIST_FILE = "Weather That I Understand/Weather That I Understand-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -320,11 +332,16 @@
 		CCF2C60F1722263600AFF6BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather That I Understand/Weather That I Understand-Prefix.pch";
 				INFOPLIST_FILE = "Weather That I Understand/Weather That I Understand-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
