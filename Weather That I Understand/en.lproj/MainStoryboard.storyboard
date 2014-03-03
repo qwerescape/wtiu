@@ -144,7 +144,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="358" id="yKS-2b-iz1"/>
                                 </constraints>
-                                <color key="textColor" patternImage="7E5295CE-7E37-4DA3-9CBB-D588BE0484CE" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="64EE2A02-5D7B-4E8F-8EB4-F92BFF7FE5C1" colorSpace="pattern"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
@@ -180,7 +180,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7E5295CE-7E37-4DA3-9CBB-D588BE0484CE" width="320" height="460">
+        <image name="64EE2A02-5D7B-4E8F-8EB4-F92BFF7FE5C1" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
