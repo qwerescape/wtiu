@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SevenSwitch.h"
 
 @interface EditController : UIViewController{
     CGRect originalTextViewFrame;
 }
 @property (weak, nonatomic) IBOutlet UITextView *editTextBox;
-@property (weak, nonatomic) IBOutlet UISwitch *cfSwitch;
+@property (weak, nonatomic) IBOutlet SevenSwitch *cfSwitch;
 - (IBAction)cfValueSwitched:(id)sender;
 - (IBAction)donePressed:(id)sender;
 - (IBAction)resetMessage:(id)sender;

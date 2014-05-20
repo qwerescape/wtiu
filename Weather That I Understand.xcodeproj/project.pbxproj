@@ -11,8 +11,10 @@
 		CC2DEC65174C5949000E82BE /* noisy.gif in Resources */ = {isa = PBXBuildFile; fileRef = CC2DEC64174C5949000E82BE /* noisy.gif */; };
 		CC72881C1756F36F00370BF5 /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC72881B1756F36F00370BF5 /* refresh@2x.png */; };
 		CC78420A174EF6D10087BD68 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC784209174EF6D10087BD68 /* EditController.m */; };
-		CC8F3F2F177F7F0D00ACC2CD /* celcius@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F2E177F7F0D00ACC2CD /* celcius@2x.png */; };
-		CC8F3F31177F7FB700ACC2CD /* ferenheight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F30177F7FB700ACC2CD /* ferenheight@2x.png */; };
+		CC831069192AC20800E1579E /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = CC831068192AC20800E1579E /* SevenSwitch.m */; };
+		CC83106B192AC2A800E1579E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC83106A192AC2A800E1579E /* QuartzCore.framework */; };
+		CC831072192AD28D00E1579E /* f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC831070192AD28D00E1579E /* f@2x.png */; };
+		CC831073192AD28D00E1579E /* c@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC831071192AD28D00E1579E /* c@2x.png */; };
 		CC8F3F351782432D00ACC2CD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F341782432D00ACC2CD /* logo.png */; };
 		CC8F3F371782437200ACC2CD /* logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F361782437200ACC2CD /* logo_small.png */; };
 		CCCB25771728AF2B00377BA0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCB25761728AF2B00377BA0 /* CoreLocation.framework */; };
@@ -24,9 +26,6 @@
 		CCF2C5F81722263600AFF6BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCF2C5F61722263600AFF6BD /* InfoPlist.strings */; };
 		CCF2C5FA1722263600AFF6BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF2C5F91722263600AFF6BD /* main.m */; };
 		CCF2C5FE1722263600AFF6BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF2C5FD1722263600AFF6BD /* AppDelegate.m */; };
-		CCF2C6001722263600AFF6BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF2C5FF1722263600AFF6BD /* Default.png */; };
-		CCF2C6021722263600AFF6BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF2C6011722263600AFF6BD /* Default@2x.png */; };
-		CCF2C6041722263600AFF6BD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF2C6031722263600AFF6BD /* Default-568h@2x.png */; };
 		CCF2C6071722263600AFF6BD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF2C6051722263600AFF6BD /* MainStoryboard.storyboard */; };
 		CCF2C60A1722263600AFF6BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF2C6091722263600AFF6BD /* ViewController.m */; };
 		CCF2C612172227B600AFF6BD /* WeatherService.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF2C611172227B600AFF6BD /* WeatherService.m */; };
@@ -38,8 +37,11 @@
 		CC72881B1756F36F00370BF5 /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
 		CC784208174EF6D10087BD68 /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
 		CC784209174EF6D10087BD68 /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
-		CC8F3F2E177F7F0D00ACC2CD /* celcius@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "celcius@2x.png"; sourceTree = "<group>"; };
-		CC8F3F30177F7FB700ACC2CD /* ferenheight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ferenheight@2x.png"; sourceTree = "<group>"; };
+		CC831067192AC20800E1579E /* SevenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSwitch.h; sourceTree = "<group>"; };
+		CC831068192AC20800E1579E /* SevenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSwitch.m; sourceTree = "<group>"; };
+		CC83106A192AC2A800E1579E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CC831070192AD28D00E1579E /* f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f@2x.png"; sourceTree = "<group>"; };
+		CC831071192AD28D00E1579E /* c@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "c@2x.png"; sourceTree = "<group>"; };
 		CC8F3F341782432D00ACC2CD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC8F3F361782437200ACC2CD /* logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_small.png; sourceTree = "<group>"; };
 		CCCB25761728AF2B00377BA0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -57,9 +59,6 @@
 		CCF2C5FB1722263600AFF6BD /* Weather That I Understand-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weather That I Understand-Prefix.pch"; sourceTree = "<group>"; };
 		CCF2C5FC1722263600AFF6BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CCF2C5FD1722263600AFF6BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CCF2C5FF1722263600AFF6BD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		CCF2C6011722263600AFF6BD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		CCF2C6031722263600AFF6BD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CCF2C6061722263600AFF6BD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CCF2C6081722263600AFF6BD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CCF2C6091722263600AFF6BD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC83106B192AC2A800E1579E /* QuartzCore.framework in Frameworks */,
 				CCCB25771728AF2B00377BA0 /* CoreLocation.framework in Frameworks */,
 				CCF2C5EE1722263600AFF6BD /* UIKit.framework in Frameworks */,
 				CCF2C5F01722263600AFF6BD /* Foundation.framework in Frameworks */,
@@ -82,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC831066192AC1E100E1579E /* sevenswitch */ = {
+			isa = PBXGroup;
+			children = (
+				CC831067192AC20800E1579E /* SevenSwitch.h */,
+				CC831068192AC20800E1579E /* SevenSwitch.m */,
+			);
+			name = sevenswitch;
+			sourceTree = "<group>";
+		};
 		CCF2C5E11722263600AFF6BD = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +113,7 @@
 		CCF2C5EC1722263600AFF6BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC83106A192AC2A800E1579E /* QuartzCore.framework */,
 				CCCB25761728AF2B00377BA0 /* CoreLocation.framework */,
 				CCF2C5ED1722263600AFF6BD /* UIKit.framework */,
 				CCF2C5EF1722263600AFF6BD /* Foundation.framework */,
@@ -115,6 +125,7 @@
 		CCF2C5F31722263600AFF6BD /* Weather That I Understand */ = {
 			isa = PBXGroup;
 			children = (
+				CC831066192AC1E100E1579E /* sevenswitch */,
 				CCF2C5FC1722263600AFF6BD /* AppDelegate.h */,
 				CCF2C5FD1722263600AFF6BD /* AppDelegate.m */,
 				CCF2C6051722263600AFF6BD /* MainStoryboard.storyboard */,
@@ -136,18 +147,15 @@
 		CCF2C5F41722263600AFF6BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC831070192AD28D00E1579E /* f@2x.png */,
+				CC831071192AD28D00E1579E /* c@2x.png */,
 				501EE73C18C439A200B941D4 /* edit-icon@2x.png */,
 				CC72881B1756F36F00370BF5 /* refresh@2x.png */,
 				CC2DEC64174C5949000E82BE /* noisy.gif */,
-				CC8F3F2E177F7F0D00ACC2CD /* celcius@2x.png */,
-				CC8F3F30177F7FB700ACC2CD /* ferenheight@2x.png */,
 				CCF2C5F51722263600AFF6BD /* Weather That I Understand-Info.plist */,
 				CCF2C5F61722263600AFF6BD /* InfoPlist.strings */,
 				CCF2C5F91722263600AFF6BD /* main.m */,
 				CCF2C5FB1722263600AFF6BD /* Weather That I Understand-Prefix.pch */,
-				CCF2C5FF1722263600AFF6BD /* Default.png */,
-				CCF2C6011722263600AFF6BD /* Default@2x.png */,
-				CCF2C6031722263600AFF6BD /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,6 +188,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Chao Qu";
+				TargetAttributes = {
+					CCF2C5E91722263600AFF6BD = {
+						DevelopmentTeam = 7LZJEJM8M3;
+					};
+				};
 			};
 			buildConfigurationList = CCF2C5E51722263600AFF6BD /* Build configuration list for PBXProject "Weather That I Understand" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -204,15 +217,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCF2C5F81722263600AFF6BD /* InfoPlist.strings in Resources */,
-				CCF2C6001722263600AFF6BD /* Default.png in Resources */,
-				CCF2C6021722263600AFF6BD /* Default@2x.png in Resources */,
-				CCF2C6041722263600AFF6BD /* Default-568h@2x.png in Resources */,
 				CCF2C6071722263600AFF6BD /* MainStoryboard.storyboard in Resources */,
+				CC831073192AD28D00E1579E /* c@2x.png in Resources */,
 				501EE73D18C439A200B941D4 /* edit-icon@2x.png in Resources */,
+				CC831072192AD28D00E1579E /* f@2x.png in Resources */,
 				CC2DEC65174C5949000E82BE /* noisy.gif in Resources */,
 				CC72881C1756F36F00370BF5 /* refresh@2x.png in Resources */,
-				CC8F3F2F177F7F0D00ACC2CD /* celcius@2x.png in Resources */,
-				CC8F3F31177F7FB700ACC2CD /* ferenheight@2x.png in Resources */,
 				CC8F3F351782432D00ACC2CD /* logo.png in Resources */,
 				CC8F3F371782437200ACC2CD /* logo_small.png in Resources */,
 			);
@@ -228,6 +238,7 @@
 				CCF2C5FA1722263600AFF6BD /* main.m in Sources */,
 				CCF2C5FE1722263600AFF6BD /* AppDelegate.m in Sources */,
 				CCF2C60A1722263600AFF6BD /* ViewController.m in Sources */,
+				CC831069192AC20800E1579E /* SevenSwitch.m in Sources */,
 				CCF2C612172227B600AFF6BD /* WeatherService.m in Sources */,
 				CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */,
 				CCCB257F172B747400377BA0 /* Weather.m in Sources */,
@@ -316,8 +327,8 @@
 		CCF2C60E1722263600AFF6BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather That I Understand/Weather That I Understand-Prefix.pch";
 				INFOPLIST_FILE = "Weather That I Understand/Weather That I Understand-Info.plist";
@@ -332,8 +343,8 @@
 		CCF2C60F1722263600AFF6BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather That I Understand/Weather That I Understand-Prefix.pch";
 				INFOPLIST_FILE = "Weather That I Understand/Weather That I Understand-Info.plist";

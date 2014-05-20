@@ -57,8 +57,9 @@
     
     //set default celcius ferenheight switch
     [self.cfSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]];
-    self.cfSwitch.onImage = [UIImage imageNamed:@"celcius.png"];
-    self.cfSwitch.offImage = [UIImage imageNamed:@"ferenheight.png"];
+    self.cfSwitch.onImage = [UIImage imageNamed:@"c.png"];
+    self.cfSwitch.offImage = [UIImage imageNamed:@"f.png"];
+    self.cfSwitch.onTintColor = [UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];    self.cfSwitch.isRounded = NO;
     
     NSString* userMessage = [[NSUserDefaults standardUserDefaults]stringForKey:@"user_message"];
     if (userMessage == nil){
