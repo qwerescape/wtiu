@@ -59,7 +59,11 @@
     [self.cfSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]];
     self.cfSwitch.onImage = [UIImage imageNamed:@"c.png"];
     self.cfSwitch.offImage = [UIImage imageNamed:@"f.png"];
-    self.cfSwitch.onTintColor = [UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];    self.cfSwitch.isRounded = NO;
+    self.cfSwitch.onTintColor = [UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
+    self.cfSwitch.isRounded = NO;
+    
+    self.editTextBox.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    self.editTextBox.clipsToBounds = YES;
     
     NSString* userMessage = [[NSUserDefaults standardUserDefaults]stringForKey:@"user_message"];
     if (userMessage == nil){
@@ -67,45 +71,27 @@
     }
    
     [self highlightKeywords:userMessage];
-    self.editTextBox.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    self.editTextBox.layer.cornerRadius = 10.0;
-    self.editTextBox.clipsToBounds = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     // Register notifications for when the keyboard appears
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    CGRect frame = self.editTextBox.frame;
-    frame.size.height = self.editTextBox.contentSize.height;
-    self.editTextBox.frame = frame;
 }
 
 -(void)moveTextViewForKeyboard:(NSNotification*)notification up:(BOOL)up {
     NSDictionary *userInfo = [notification userInfo];
-    NSTimeInterval animationDuration;
-    UIViewAnimationCurve animationCurve;
-    CGRect keyboardRect;
-    
-    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
-    animationDuration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    keyboardRect = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    [UIView setAnimationCurve:animationCurve];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     if (up == YES) {
-        CGFloat keyboardTop = keyboardRect.origin.y;
-        CGRect newTextViewFrame = self.editTextBox.frame;
-        originalTextViewFrame = self.editTextBox.frame;
-        newTextViewFrame.size.height = keyboardTop - self.editTextBox.frame.origin.y;
-        
-        self.editTextBox.frame = newTextViewFrame;
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+        self.editTextBox.contentInset = contentInsets;
+        self.editTextBox.scrollIndicatorInsets = contentInsets;
+        //scroll cursor into view?
     } else {
-        // Keyboard is going away (down) - restore original frame
-        self.editTextBox.frame = originalTextViewFrame;
+        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+        self.editTextBox.contentInset = contentInsets;
+        self.editTextBox.scrollIndicatorInsets = contentInsets;
     }
     
     [UIView commitAnimations];
@@ -131,10 +117,6 @@
 - (IBAction)resetMessage:(id)sender {
    NSString* userMessage = [Weather getDefaultMessageString];
     [self highlightKeywords:userMessage];
-}
-
-- (IBAction)closeKeyboard:(id)sender {
-    [self.editTextBox endEditing:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

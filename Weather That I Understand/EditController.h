@@ -17,5 +17,4 @@
 - (IBAction)cfValueSwitched:(id)sender;
 - (IBAction)donePressed:(id)sender;
 - (IBAction)resetMessage:(id)sender;
-- (IBAction)closeKeyboard:(id)sender;
 @end
