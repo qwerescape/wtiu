@@ -71,6 +71,14 @@
     }
    
     [self highlightKeywords:userMessage];
+    
+    NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
+    [toolBarItems removeObject:self.doneEditButton];
+    [toolBarItems removeObject:self.resetButton];
+    [self.toolBar setItems:[toolBarItems copy]];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+    self.editTextBox.textContainerInset = contentInsets;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -79,22 +87,35 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
+    [toolBarItems addObject:self.doneEditButton];
+    [toolBarItems addObject:self.resetButton];
+    [toolBarItems removeObject:self.editButton];
+    [self.toolBar setItems:toolBarItems animated:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
+    [toolBarItems removeObject:self.doneEditButton];
+    [toolBarItems removeObject:self.resetButton];
+    [toolBarItems addObject:self.editButton];
+    [self.toolBar setItems:toolBarItems animated:YES];
+}
+
 -(void)moveTextViewForKeyboard:(NSNotification*)notification up:(BOOL)up {
     NSDictionary *userInfo = [notification userInfo];
     CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     if (up == YES) {
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height-20, 0.0);
         self.editTextBox.contentInset = contentInsets;
         self.editTextBox.scrollIndicatorInsets = contentInsets;
-        //scroll cursor into view?
     } else {
         UIEdgeInsets contentInsets = UIEdgeInsetsZero;
         self.editTextBox.contentInset = contentInsets;
         self.editTextBox.scrollIndicatorInsets = contentInsets;
     }
-    
-    [UIView commitAnimations];
 }
 
 - (void)keyboardWillShow:(NSNotification*)notification {
@@ -119,6 +140,10 @@
     [self highlightKeywords:userMessage];
 }
 
+- (IBAction)enterEditMode:(id)sender {
+    [self.editTextBox becomeFirstResponder];
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     NSString* message = self.editTextBox.attributedText.string;
@@ -129,5 +154,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)doneEditMode:(id)sender {
+    [self.editTextBox endEditing:YES];
 }
 @end
