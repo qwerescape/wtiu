@@ -34,7 +34,7 @@
               windDesc:(NSString*)windDesc
              windSpeed:(NSString*)windSpeed{
 
-    UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:23.0f];
+    UIFont *specialFont=[UIFont fontWithName:@"HelveticaNeue-Medium" size:21.0f];
     UIColor *specialFontColor=[UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
 //    UIColor *normalFontColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     UIColor *normalFontColor=[UIColor colorWithRed:0.306 green:0.306 blue:0.306 alpha:1];

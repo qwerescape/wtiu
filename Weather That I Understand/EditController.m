@@ -13,6 +13,7 @@
 -(void)keyboardWillShow:(NSNotification*)notification;
 -(void)keyboardWillHide:(NSNotification*)notification;
 -(void)moveTextViewForKeyboard:(NSNotification*)notification up:(BOOL)up;
+-(void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated;
 @end
 
 @implementation EditController
@@ -103,6 +104,12 @@
     [self.toolBar setItems:toolBarItems animated:YES];
 }
 
+- (void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated{
+    CGRect rect = [textView caretRectForPosition:textView.selectedTextRange.end];
+    rect.size.height += textView.textContainerInset.bottom;
+    [textView scrollRectToVisible:rect animated:animated];
+}
+
 -(void)moveTextViewForKeyboard:(NSNotification*)notification up:(BOOL)up {
     NSDictionary *userInfo = [notification userInfo];
     CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
@@ -111,6 +118,7 @@
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height-20, 0.0);
         self.editTextBox.contentInset = contentInsets;
         self.editTextBox.scrollIndicatorInsets = contentInsets;
+        [self scrollToCaretInTextView:self.editTextBox animated:NO];
     } else {
         UIEdgeInsets contentInsets = UIEdgeInsetsZero;
         self.editTextBox.contentInset = contentInsets;
