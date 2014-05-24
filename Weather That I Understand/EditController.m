@@ -60,7 +60,7 @@
     [self.cfSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]];
     self.cfSwitch.onImage = [UIImage imageNamed:@"c.png"];
     self.cfSwitch.offImage = [UIImage imageNamed:@"f.png"];
-    self.cfSwitch.onTintColor = [UIColor colorWithRed:0.87 green:0.352 blue:0.371 alpha:1];
+    self.cfSwitch.onTintColor = [UIColor clearColor];
     self.cfSwitch.isRounded = NO;
     
     self.editTextBox.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -80,6 +80,10 @@
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
     self.editTextBox.textContainerInset = contentInsets;
+    
+    [self.toolBar setBackgroundImage:[UIImage new]
+                  forToolbarPosition:UIBarPositionAny
+                          barMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
