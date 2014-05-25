@@ -10,10 +10,6 @@
 #import "Weather.h"
 #import <QuartzCore/QuartzCore.h>
 @interface EditController ()
--(void)keyboardWillShow:(NSNotification*)notification;
--(void)keyboardWillHide:(NSNotification*)notification;
--(void)moveTextViewForKeyboard:(NSNotification*)notification up:(BOOL)up;
--(void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated;
 @end
 
 @implementation EditController
@@ -78,64 +74,43 @@
     [toolBarItems removeObject:self.resetButton];
     [self.toolBar setItems:[toolBarItems copy]];
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
-    self.editTextBox.textContainerInset = contentInsets;
-    
     [self.toolBar setBackgroundImage:[UIImage new]
                   forToolbarPosition:UIBarPositionAny
                           barMetrics:UIBarMetricsDefault];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, 200.0, 0.0);
+    self.editTextBox.contentInset= contentInsets;
+    self.editTextBox.textContainerInset = UIEdgeInsetsMake(5.0, 5.0, 0.0, 5.0);
+    self.editTextBox.scrollIndicatorInsets = contentInsets;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    // Register notifications for when the keyboard appears
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView{
+- (void)textViewShouldBeginEditing:(UITextView *)textView{
     NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
     [toolBarItems addObject:self.doneEditButton];
     [toolBarItems addObject:self.resetButton];
     [toolBarItems removeObject:self.editButton];
     [self.toolBar setItems:toolBarItems animated:YES];
 }
+//
+//-(void)textViewDidChange:(UITextView *)textView{
+//    CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
+//    NSLog(@"text, rec: x:%f, y:%f, width:%f, height:%f", caretRect.origin.x, caretRect.origin.y, caretRect.size.width, caretRect.size.height);
+//    [textView scrollRectToVisible:caretRect animated:NO];
+//}
 
-- (void)textViewDidEndEditing:(UITextView *)textView{
+- (void)textViewShouldEndEditing:(UITextView *)textView{
     NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
     [toolBarItems removeObject:self.doneEditButton];
     [toolBarItems removeObject:self.resetButton];
     [toolBarItems addObject:self.editButton];
     [self.toolBar setItems:toolBarItems animated:YES];
 }
-
-- (void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated{
-    CGRect rect = [textView caretRectForPosition:textView.selectedTextRange.end];
-    rect.size.height += textView.textContainerInset.bottom;
-    [textView scrollRectToVisible:rect animated:animated];
-}
-
--(void)moveTextViewForKeyboard:(NSNotification*)notification up:(BOOL)up {
-    NSDictionary *userInfo = [notification userInfo];
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+- (void)textViewDidChangeSelection:(UITextView *)textView{
+    CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
     
-    if (up == YES) {
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height-20, 0.0);
-        self.editTextBox.contentInset = contentInsets;
-        self.editTextBox.scrollIndicatorInsets = contentInsets;
-        [self scrollToCaretInTextView:self.editTextBox animated:NO];
-    } else {
-        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-        self.editTextBox.contentInset = contentInsets;
-        self.editTextBox.scrollIndicatorInsets = contentInsets;
-    }
-}
-
-- (void)keyboardWillShow:(NSNotification*)notification {
-    [self moveTextViewForKeyboard:notification up:YES];
-}
-
-- (void)keyboardWillHide:(NSNotification*)notification {
-    [self moveTextViewForKeyboard:notification up:NO];
+    NSLog(@"selection, rec: x:%f, y:%f, width:%f, height:%f", caretRect.origin.x, caretRect.origin.y, caretRect.size.width, caretRect.size.height);
+    [textView scrollRectToVisible:caretRect animated:NO];
+    
 }
 
 - (IBAction)cfValueSwitched:(id)sender {
@@ -158,8 +133,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    NSString* message = self.editTextBox.attributedText.string;
-    [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"user_message"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -168,6 +141,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)doneEditMode:(id)sender {
-    [self.editTextBox endEditing:YES];
+    NSString* message = self.editTextBox.attributedText.string;
+    [[NSUserDefaults standardUserDefaults]setObject:message forKey:@"user_message"];
+    [self.editTextBox endEditing:NO];
 }
 @end

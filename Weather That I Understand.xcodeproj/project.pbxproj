@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		501EE73D18C439A200B941D4 /* edit-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 501EE73C18C439A200B941D4 /* edit-icon@2x.png */; };
 		CC2DEC65174C5949000E82BE /* noisy.gif in Resources */ = {isa = PBXBuildFile; fileRef = CC2DEC64174C5949000E82BE /* noisy.gif */; };
 		CC6A8E3F193131EB00C8AB0A /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC6A8E3E193131EB00C8AB0A /* settings@2x.png */; };
-		CC72881C1756F36F00370BF5 /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC72881B1756F36F00370BF5 /* refresh@2x.png */; };
+		CC6A8E411931340A00C8AB0A /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC6A8E401931340A00C8AB0A /* refresh@2x.png */; };
 		CC78420A174EF6D10087BD68 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC784209174EF6D10087BD68 /* EditController.m */; };
 		CC831069192AC20800E1579E /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = CC831068192AC20800E1579E /* SevenSwitch.m */; };
 		CC83106B192AC2A800E1579E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC83106A192AC2A800E1579E /* QuartzCore.framework */; };
@@ -34,10 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		501EE73C18C439A200B941D4 /* edit-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon@2x.png"; sourceTree = "<group>"; };
 		CC2DEC64174C5949000E82BE /* noisy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = noisy.gif; sourceTree = "<group>"; };
 		CC6A8E3E193131EB00C8AB0A /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
-		CC72881B1756F36F00370BF5 /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
+		CC6A8E401931340A00C8AB0A /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
 		CC784208174EF6D10087BD68 /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
 		CC784209174EF6D10087BD68 /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
 		CC831067192AC20800E1579E /* SevenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSwitch.h; sourceTree = "<group>"; };
@@ -152,11 +150,10 @@
 		CCF2C5F41722263600AFF6BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC6A8E401931340A00C8AB0A /* refresh@2x.png */,
 				CC6A8E3E193131EB00C8AB0A /* settings@2x.png */,
 				CC831070192AD28D00E1579E /* f@2x.png */,
 				CC831071192AD28D00E1579E /* c@2x.png */,
-				501EE73C18C439A200B941D4 /* edit-icon@2x.png */,
-				CC72881B1756F36F00370BF5 /* refresh@2x.png */,
 				CC2DEC64174C5949000E82BE /* noisy.gif */,
 				CCF2C5F51722263600AFF6BD /* Weather That I Understand-Info.plist */,
 				CCF2C5F61722263600AFF6BD /* InfoPlist.strings */,
@@ -226,11 +223,10 @@
 				CCF2C6071722263600AFF6BD /* MainStoryboard.storyboard in Resources */,
 				CC831073192AD28D00E1579E /* c@2x.png in Resources */,
 				CC831075192D9A0200E1579E /* Default-568h@2x.png in Resources */,
-				501EE73D18C439A200B941D4 /* edit-icon@2x.png in Resources */,
 				CC831072192AD28D00E1579E /* f@2x.png in Resources */,
 				CC2DEC65174C5949000E82BE /* noisy.gif in Resources */,
 				CC6A8E3F193131EB00C8AB0A /* settings@2x.png in Resources */,
-				CC72881C1756F36F00370BF5 /* refresh@2x.png in Resources */,
+				CC6A8E411931340A00C8AB0A /* refresh@2x.png in Resources */,
 				CC8F3F351782432D00ACC2CD /* logo.png in Resources */,
 				CC8F3F371782437200ACC2CD /* logo_small.png in Resources */,
 			);
