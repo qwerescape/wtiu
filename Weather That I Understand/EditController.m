@@ -9,16 +9,19 @@
 #import "EditController.h"
 #import "Weather.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SyntaxHighlightTextStorage.h"
 @interface EditController ()
+- (void)keyboardWillShow:(NSNotification*)notification;
 @end
 
-@implementation EditController
+@implementation EditController{
+    SyntaxHighlightTextStorage * myTextStorage;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -43,7 +46,7 @@
             [attributedKeyword addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, attributedKeyword.length)];
             [message replaceCharactersInRange:[message.string rangeOfString:keyword] withAttributedString:attributedKeyword];
         }
-    }    
+    }
     self.editTextBox.attributedText = message;
 }
 
@@ -59,15 +62,15 @@
     self.cfSwitch.onTintColor = [UIColor clearColor];
     self.cfSwitch.isRounded = NO;
     
-    self.editTextBox.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    self.editTextBox.clipsToBounds = YES;
-    
     NSString* userMessage = [[NSUserDefaults standardUserDefaults]stringForKey:@"user_message"];
     if (userMessage == nil){
         userMessage = [Weather getDefaultMessageString];
     }
-   
-    [self highlightKeywords:userMessage];
+//    [self highlightKeywords:userMessage];
+    myTextStorage = [SyntaxHighlightTextStorage new];
+    [myTextStorage addLayoutManager:self.editTextBox.layoutManager];
+    [myTextStorage replaceCharactersInRange:NSMakeRange(0, 0) withString:userMessage];
+//    self.editTextBox.text = userMessage;
     
     NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
     [toolBarItems removeObject:self.doneEditButton];
@@ -84,6 +87,25 @@
     self.editTextBox.scrollIndicatorInsets = contentInsets;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    // Register notifications for when the keyboard appears
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSLog(@"keyboard will show");
+   
+    
+    double delayInMiliSeconds = 200.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInMiliSeconds * NSEC_PER_MSEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        CGRect caretRect = [self.editTextBox caretRectForPosition:self.editTextBox.selectedTextRange.end];
+        NSLog(@"caretRect: %f,%f", caretRect.origin.y, caretRect.size.height);
+        [self.editTextBox scrollRectToVisible:caretRect animated:YES];
+    });
+}
+
+
 - (void)textViewShouldBeginEditing:(UITextView *)textView{
     NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
     [toolBarItems addObject:self.doneEditButton];
@@ -91,12 +113,6 @@
     [toolBarItems removeObject:self.editButton];
     [self.toolBar setItems:toolBarItems animated:YES];
 }
-//
-//-(void)textViewDidChange:(UITextView *)textView{
-//    CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
-//    NSLog(@"text, rec: x:%f, y:%f, width:%f, height:%f", caretRect.origin.x, caretRect.origin.y, caretRect.size.width, caretRect.size.height);
-//    [textView scrollRectToVisible:caretRect animated:NO];
-//}
 
 - (void)textViewShouldEndEditing:(UITextView *)textView{
     NSMutableArray* toolBarItems = [self.toolBar.items mutableCopy];
@@ -107,9 +123,7 @@
 }
 - (void)textViewDidChangeSelection:(UITextView *)textView{
     CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
-    
-    NSLog(@"selection, rec: x:%f, y:%f, width:%f, height:%f", caretRect.origin.x, caretRect.origin.y, caretRect.size.width, caretRect.size.height);
-    [textView scrollRectToVisible:caretRect animated:NO];
+    [textView scrollRectToVisible:caretRect animated:YES];
     
 }
 

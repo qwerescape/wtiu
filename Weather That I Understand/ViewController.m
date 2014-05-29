@@ -57,6 +57,7 @@
         
         [cityName addAttribute:NSFontAttributeName value:normalFont range:NSMakeRange(0, cityName.length)];
         [cityName addAttribute:NSForegroundColorAttributeName value:normalFontColor range:NSMakeRange(0, cityName.length)];
+        [cityName addAttribute:NSTextEffectAttributeName value:NSTextEffectLetterpressStyle range:NSMakeRange(0,cityName.length)];
         
         [attrFillerText replaceCharactersInRange:[attrFillerText.string rangeOfString:@"{city}"] withAttributedString:cityName];
     }
@@ -120,7 +121,7 @@
     
     NSInteger strLength = [attrFillerText length];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setLineSpacing:13];
+    [style setLineSpacing:8];
     [attrFillerText addAttribute:NSParagraphStyleAttributeName
                       value:style
                       range:NSMakeRange(0, strLength)];

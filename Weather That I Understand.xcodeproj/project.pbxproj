@@ -16,6 +16,7 @@
 		CC831072192AD28D00E1579E /* f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC831070192AD28D00E1579E /* f@2x.png */; };
 		CC831073192AD28D00E1579E /* c@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC831071192AD28D00E1579E /* c@2x.png */; };
 		CC831075192D9A0200E1579E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC831074192D9A0200E1579E /* Default-568h@2x.png */; };
+		CC8D110A1936F27600566E75 /* SyntaxHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D11091936F27600566E75 /* SyntaxHighlightTextStorage.m */; };
 		CC8F3F351782432D00ACC2CD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F341782432D00ACC2CD /* logo.png */; };
 		CC8F3F371782437200ACC2CD /* logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8F3F361782437200ACC2CD /* logo_small.png */; };
 		CCCB25771728AF2B00377BA0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCB25761728AF2B00377BA0 /* CoreLocation.framework */; };
@@ -44,6 +45,8 @@
 		CC831070192AD28D00E1579E /* f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f@2x.png"; sourceTree = "<group>"; };
 		CC831071192AD28D00E1579E /* c@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "c@2x.png"; sourceTree = "<group>"; };
 		CC831074192D9A0200E1579E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CC8D11081936F27600566E75 /* SyntaxHighlightTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightTextStorage.h; sourceTree = "<group>"; };
+		CC8D11091936F27600566E75 /* SyntaxHighlightTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlightTextStorage.m; sourceTree = "<group>"; };
 		CC8F3F341782432D00ACC2CD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		CC8F3F361782437200ACC2CD /* logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_small.png; sourceTree = "<group>"; };
 		CCCB25761728AF2B00377BA0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -143,6 +146,8 @@
 				CCCB257E172B747400377BA0 /* Weather.m */,
 				CC784208174EF6D10087BD68 /* EditController.h */,
 				CC784209174EF6D10087BD68 /* EditController.m */,
+				CC8D11081936F27600566E75 /* SyntaxHighlightTextStorage.h */,
+				CC8D11091936F27600566E75 /* SyntaxHighlightTextStorage.m */,
 			);
 			path = "Weather That I Understand";
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				CCCB257A1728BD5A00377BA0 /* WeatherServiceDelegate.m in Sources */,
 				CCCB257F172B747400377BA0 /* Weather.m in Sources */,
 				CC78420A174EF6D10087BD68 /* EditController.m in Sources */,
+				CC8D110A1936F27600566E75 /* SyntaxHighlightTextStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
